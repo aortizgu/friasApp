@@ -1,3 +1,4 @@
 friasApp.code-workspace
 build
 .vscode
+.DS_Store

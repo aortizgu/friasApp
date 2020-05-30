@@ -9,6 +9,8 @@ set(CMAKE_PLATFORM_INDEPENDENT_CODE ON)
 include(CTest)
 enable_testing()
 
+add_subdirectory(spdlog)
+
 add_subdirectory(src)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
