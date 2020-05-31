@@ -1,3 +1,5 @@
 include_directories(${friasApp_SOURCE_DIR}/spdlog)
-add_executable(friasApp main.cpp)
-target_link_libraries(friasApp spdlog)
+include_directories(${friasApp_SOURCE_DIR}/drogon)
+file(GLOB SOURCES "*.cpp" "*.cc")
+add_executable(friasApp ${SOURCES})
+target_link_libraries(friasApp spdlog drogon)
