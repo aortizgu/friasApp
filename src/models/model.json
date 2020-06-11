@@ -1,0 +1,8 @@
+{
+    "rdbms": "sqlite3",
+    "filename":"friasApp.sqlite3",
+    "dbname": "friasApp.sqlite3",
+    "is_fast": true,
+    "connection_number": 1,
+    "tables": []
+}

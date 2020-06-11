@@ -3,9 +3,11 @@
 #include <spdlog/sinks/basic_file_sink.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include "aog.h"
+
 #include "DigestAuthFilter.h"
 
 using namespace spdlog;
+using namespace drogon;
 
 void init_log(const std::string &appname)
 {
@@ -53,7 +55,9 @@ void print_handlers()
 int main(int argc, char *argv[])
 {
     init_log(argv[0]);
-    std::map<std::string, std::string> credentials;
+    std::map<std::string, std::string> config_credentials;
+    std::string realm("drogonRealm");
+    std::string opaque("drogonOpaque");
     std::string config_file = "config.json";
     if (argc > 1)
     {
@@ -67,17 +71,23 @@ int main(int argc, char *argv[])
     }
     else
     {
+        if (!json["realm"].empty())
+        {
+            realm = json["realm"].asString();
+        }
+        if (!json["opaque"].empty())
+        {
+            opaque = json["opaque"].asString();
+        }
         for (auto &&i : json["credentials"])
         {
-            credentials[i["user"].asString()] = i["password"].asString();
+            config_credentials[i["user"].asString()] = i["password"].asString();
         }
     }
 
-    auto auth_filter = std::make_shared<DigestAuthFilter>(credentials);
+    auto auth_filter = std::make_shared<DigestAuthFilter>(config_credentials, realm, opaque);
     app().registerFilter(auth_filter);
-    // auto ctrlPtr = std::make_shared<aog>();
-    // app().registerController(ctrlPtr);
-
+ 
     app().registerBeginningAdvice(
         []() { LOG_DEBUG << "Event loop is running!"; });
     app().registerNewConnectionAdvice([](const trantor::InetAddress &peer,

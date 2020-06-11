@@ -8,9 +8,10 @@
     ],
     "db_clients": [
         {
+            "name": "default",
             "rdbms": "sqlite3",
-            "filename":"friasApp.db",
-            "dbname": "frias_app.db",
+            "filename":"friasApp.sqlite3",
+            "dbname": "friasApp.sqlite3",
             "is_fast": false,
             "connection_number": 1
         }
@@ -69,6 +70,8 @@
         "client_max_websocket_message_size": "128K"
     },
     "custom_config": {
+        "realm" : "drogonRealm",
+        "opaque" : "drogonOpaque",
         "credentials" : [ {"user" : "aortiz", "password": "test"} ]
     }
 }
