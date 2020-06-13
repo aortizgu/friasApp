@@ -9,9 +9,11 @@ set(OPENSSL_ROOT_DIR /usr/local/opt/openssl@1.1)
 include(CTest)
 enable_testing()
 
+
 add_subdirectory(spdlog)
 add_subdirectory(drogon)
 add_subdirectory(src)
+add_subdirectory(test)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
