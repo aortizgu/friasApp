@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<%inc
+#include "../../src/models/Menu.h"
+%>
+<%c++
+    auto menus=@@.get<std::vector<drogon_model::sqlite3::Menu>>("menus");
+    auto errorMsg=@@.get<std::string>("errorMsg");
+%>
+<head>
+    <meta charset="UTF-8">
+    <title>[[ title ]]</title>
+</head>
+<body>
+	<%c++ if(!errorMsg.empty()){%>
+	<H1>ERROR: {%errorMsg%}</H1>
+	<%c++}%>
+    <%c++ if(!menus.empty()){%>
+    <H1>Menu</H1>
+    <table border="1">
+      <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>first1</th>
+        <th>first2</th>
+        <th>first3</th>
+        <th>first4</th>
+        <th>first5</th>
+        <th>first6</th>
+        <th>first7</th>
+        <th>first8</th>
+        <th>first9</th>
+        <th>first10</th>
+        <th>second1</th>
+        <th>second2</th>
+        <th>second3</th>
+        <th>second4</th>
+        <th>second5</th>
+        <th>second6</th>
+        <th>second7</th>
+        <th>second8</th>
+        <th>second9</th>
+        <th>second10</th>
+        <th>comment1</th>
+        <th>comment2</th>
+        <th>comment3</th>
+        <th>enabled</th>        
+      </tr>
+      <%c++ for(auto menu:menus){%>
+      <tr>
+        <td>{%menu.getValueOfId()%}</td>
+        <td>{%menu.getValueOfName()%}</td>
+        <td>{%menu.getValueOfFirst1()%}</td>
+        <td>{%menu.getValueOfFirst2()%}</td>
+        <td>{%menu.getValueOfFirst3()%}</td>
+        <td>{%menu.getValueOfFirst4()%}</td>
+        <td>{%menu.getValueOfFirst5()%}</td>
+        <td>{%menu.getValueOfFirst6()%}</td>
+        <td>{%menu.getValueOfFirst7()%}</td>
+        <td>{%menu.getValueOfFirst8()%}</td>
+        <td>{%menu.getValueOfFirst9()%}</td>
+        <td>{%menu.getValueOfFirst10()%}</td>
+        <td>{%menu.getValueOfSecond1()%}</td>
+        <td>{%menu.getValueOfSecond2()%}</td>
+        <td>{%menu.getValueOfSecond3()%}</td>
+        <td>{%menu.getValueOfSecond4()%}</td>
+        <td>{%menu.getValueOfSecond5()%}</td>
+        <td>{%menu.getValueOfSecond6()%}</td>
+        <td>{%menu.getValueOfSecond7()%}</td>
+        <td>{%menu.getValueOfSecond8()%}</td>
+        <td>{%menu.getValueOfSecond9()%}</td>
+        <td>{%menu.getValueOfSecond10()%}</td>
+        <td>{%menu.getValueOfComment1()%}</td>
+        <td>{%menu.getValueOfComment2()%}</td>
+        <td>{%menu.getValueOfComment3()%}</td>
+        <td>{%menu.getValueOfEnabled()%}</td>
+      </tr>
+      <%c++}%>
+    </table>
+    <%c++ }else{%>
+    <H1>no menus</H1>
+    <%c++}%>
+</body>
+</html>

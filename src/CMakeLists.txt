@@ -17,21 +17,15 @@ foreach(cspFile ${SCP_LIST})
     set(VIEWSRC ${VIEWSRC} ${classname}.cc)
 endforeach()
 
-set( GEN_MODELS_CMD "./drogon_ctl")
-set( GEN_MODELS_CMD_ARG1 "create")
-set( GEN_MODELS_CMD_ARG2 "model")
-set( GEN_MODELS_CMD_ARG4 "-f")
-set( GEN_MODELS_CMD_ARG5 "src/models/")
-execute_process(COMMAND ${GEN_MODELS_CMD} 
-                        ${GEN_MODELS_CMD_ARG1} 
-                        ${GEN_MODELS_CMD_ARG2} 
-                        ${GEN_MODELS_CMD_ARG3} 
-                        ${GEN_MODELS_CMD_ARG4} 
-                        ${GEN_MODELS_CMD_ARG5} 
-                WORKING_DIRECTORY ${friasApp_SOURCE_DIR} 
-                RESULT_VARIABLE rv)
 message( STATUS "Generate models")
+execute_process(COMMAND "drogon_ctl" 
+                        "create" 
+                        "model" 
+                        "-f" 
+                        "." 
+                WORKING_DIRECTORY ${friasApp_SOURCE_DIR}/src/models/
+                RESULT_VARIABLE rv)
 
-file(GLOB SOURCES "*.cpp" "*.cc" "models/*.cc")
+file(GLOB SOURCES "*.cc" "filters/*.cc" "models/*.cc")
 add_executable(friasApp ${SOURCES} ${VIEWSRC})
 target_link_libraries(friasApp spdlog drogon)

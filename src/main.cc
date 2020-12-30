@@ -2,10 +2,8 @@
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/basic_file_sink.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
-#include "aog.h"
-
-#include "DigestAuthFilter.h"
-
+#include <drogon/HttpController.h>
+#include "filters/DigestAuthFilter.h"
 using namespace spdlog;
 using namespace drogon;
 
@@ -88,51 +86,51 @@ int main(int argc, char *argv[])
     auto auth_filter = std::make_shared<DigestAuthFilter>(config_credentials, realm, opaque);
     app().registerFilter(auth_filter);
  
-    app().registerBeginningAdvice(
-        []() { LOG_DEBUG << "Event loop is running!"; });
-    app().registerNewConnectionAdvice([](const trantor::InetAddress &peer,
-                                         const trantor::InetAddress &local) {
-        LOG_DEBUG << "New connection: " << peer.toIpPort() << "-->"
-                  << local.toIpPort();
-        return true;
-    });
-    app().registerPreRoutingAdvice([](const drogon::HttpRequestPtr &req,
-                                      drogon::AdviceCallback &&acb,
-                                      drogon::AdviceChainCallback &&accb) {
-        LOG_DEBUG << "preRouting1";
-        accb();
-    });
-    app().registerPostRoutingAdvice([](const drogon::HttpRequestPtr &req,
-                                       drogon::AdviceCallback &&acb,
-                                       drogon::AdviceChainCallback &&accb) {
-        LOG_DEBUG << "postRouting1";
-        LOG_DEBUG << "Matched path=" << req->matchedPathPatternData();
-        for (auto &cookie : req->cookies())
-        {
-            LOG_DEBUG << "cookie: " << cookie.first << "=" << cookie.second;
-        }
-        accb();
-    });
-    app().registerPreHandlingAdvice([](const drogon::HttpRequestPtr &req,
-                                       drogon::AdviceCallback &&acb,
-                                       drogon::AdviceChainCallback &&accb) {
-        LOG_DEBUG << "preHandling1";
-        accb();
-    });
-    app().registerPostHandlingAdvice([](const drogon::HttpRequestPtr &,
-                                        const drogon::HttpResponsePtr &resp) {
-        LOG_DEBUG << "postHandling1";
-        resp->addHeader("Access-Control-Allow-Origin", "*");
-    });
-    app().registerPreRoutingAdvice([](const drogon::HttpRequestPtr &req) {
-        LOG_DEBUG << "preRouting observer";
-    });
-    app().registerPostRoutingAdvice([](const drogon::HttpRequestPtr &req) {
-        LOG_DEBUG << "postRouting observer";
-    });
-    app().registerPreHandlingAdvice([](const drogon::HttpRequestPtr &req) {
-        LOG_DEBUG << "preHanding observer";
-    });
+//    app().registerBeginningAdvice(
+//        []() { LOG_DEBUG << "Event loop is running!"; });
+//    app().registerNewConnectionAdvice([](const trantor::InetAddress &peer,
+//                                         const trantor::InetAddress &local) {
+//        LOG_DEBUG << "New connection: " << peer.toIpPort() << "-->"
+//                  << local.toIpPort();
+//        return true;
+//    });
+//    app().registerPreRoutingAdvice([](const drogon::HttpRequestPtr &req,
+//                                      drogon::AdviceCallback &&acb,
+//                                      drogon::AdviceChainCallback &&accb) {
+//        LOG_DEBUG << "preRouting1";
+//        accb();
+//    });
+//    app().registerPostRoutingAdvice([](const drogon::HttpRequestPtr &req,
+//                                       drogon::AdviceCallback &&acb,
+//                                       drogon::AdviceChainCallback &&accb) {
+//        LOG_DEBUG << "postRouting1";
+//        LOG_DEBUG << "Matched path=" << req->matchedPathPatternData();
+//        for (auto &cookie : req->cookies())
+//        {
+//            LOG_DEBUG << "cookie: " << cookie.first << "=" << cookie.second;
+//        }
+//        accb();
+//    });
+//    app().registerPreHandlingAdvice([](const drogon::HttpRequestPtr &req,
+//                                       drogon::AdviceCallback &&acb,
+//                                       drogon::AdviceChainCallback &&accb) {
+//        LOG_DEBUG << "preHandling1";
+//        accb();
+//    });
+//    app().registerPostHandlingAdvice([](const drogon::HttpRequestPtr &,
+//                                        const drogon::HttpResponsePtr &resp) {
+//        LOG_DEBUG << "postHandling1";
+//        resp->addHeader("Access-Control-Allow-Origin", "*");
+//    });
+//    app().registerPreRoutingAdvice([](const drogon::HttpRequestPtr &req) {
+//        LOG_DEBUG << "preRouting observer";
+//    });
+//    app().registerPostRoutingAdvice([](const drogon::HttpRequestPtr &req) {
+//        LOG_DEBUG << "postRouting observer";
+//    });
+//    app().registerPreHandlingAdvice([](const drogon::HttpRequestPtr &req) {
+//        LOG_DEBUG << "preHanding observer";
+//    });
 
     print_handlers();
 
