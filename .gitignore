@@ -2,9 +2,7 @@ friasApp.code-workspace
 build*
 .vscode
 .DS_Store
-friasApp.db
-web
-*.sqlite3
+friasApp.sqlite3
 .cproject
 .metadata
 .project
