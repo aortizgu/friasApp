@@ -48,20 +48,12 @@ class Menu
         static const std::string _first4;
         static const std::string _first5;
         static const std::string _first6;
-        static const std::string _first7;
-        static const std::string _first8;
-        static const std::string _first9;
-        static const std::string _first10;
         static const std::string _second1;
         static const std::string _second2;
         static const std::string _second3;
         static const std::string _second4;
         static const std::string _second5;
         static const std::string _second6;
-        static const std::string _second7;
-        static const std::string _second8;
-        static const std::string _second9;
-        static const std::string _second10;
         static const std::string _comment1;
         static const std::string _comment2;
         static const std::string _comment3;
@@ -204,50 +196,6 @@ class Menu
     void setFirst6(std::string &&pFirst6) noexcept;
 
 
-    /**  For column first7  */
-    ///Get the value of the column first7, returns the default value if the column is null
-    const std::string &getValueOfFirst7() const noexcept;
-    ///Return a shared_ptr object pointing to the column const value, or an empty shared_ptr object if the column is null
-    const std::shared_ptr<std::string> &getFirst7() const noexcept;
-
-    ///Set the value of the column first7
-    void setFirst7(const std::string &pFirst7) noexcept;
-    void setFirst7(std::string &&pFirst7) noexcept;
-
-
-    /**  For column first8  */
-    ///Get the value of the column first8, returns the default value if the column is null
-    const std::string &getValueOfFirst8() const noexcept;
-    ///Return a shared_ptr object pointing to the column const value, or an empty shared_ptr object if the column is null
-    const std::shared_ptr<std::string> &getFirst8() const noexcept;
-
-    ///Set the value of the column first8
-    void setFirst8(const std::string &pFirst8) noexcept;
-    void setFirst8(std::string &&pFirst8) noexcept;
-
-
-    /**  For column first9  */
-    ///Get the value of the column first9, returns the default value if the column is null
-    const std::string &getValueOfFirst9() const noexcept;
-    ///Return a shared_ptr object pointing to the column const value, or an empty shared_ptr object if the column is null
-    const std::shared_ptr<std::string> &getFirst9() const noexcept;
-
-    ///Set the value of the column first9
-    void setFirst9(const std::string &pFirst9) noexcept;
-    void setFirst9(std::string &&pFirst9) noexcept;
-
-
-    /**  For column first10  */
-    ///Get the value of the column first10, returns the default value if the column is null
-    const std::string &getValueOfFirst10() const noexcept;
-    ///Return a shared_ptr object pointing to the column const value, or an empty shared_ptr object if the column is null
-    const std::shared_ptr<std::string> &getFirst10() const noexcept;
-
-    ///Set the value of the column first10
-    void setFirst10(const std::string &pFirst10) noexcept;
-    void setFirst10(std::string &&pFirst10) noexcept;
-
-
     /**  For column second1  */
     ///Get the value of the column second1, returns the default value if the column is null
     const std::string &getValueOfSecond1() const noexcept;
@@ -314,50 +262,6 @@ class Menu
     void setSecond6(std::string &&pSecond6) noexcept;
 
 
-    /**  For column second7  */
-    ///Get the value of the column second7, returns the default value if the column is null
-    const std::string &getValueOfSecond7() const noexcept;
-    ///Return a shared_ptr object pointing to the column const value, or an empty shared_ptr object if the column is null
-    const std::shared_ptr<std::string> &getSecond7() const noexcept;
-
-    ///Set the value of the column second7
-    void setSecond7(const std::string &pSecond7) noexcept;
-    void setSecond7(std::string &&pSecond7) noexcept;
-
-
-    /**  For column second8  */
-    ///Get the value of the column second8, returns the default value if the column is null
-    const std::string &getValueOfSecond8() const noexcept;
-    ///Return a shared_ptr object pointing to the column const value, or an empty shared_ptr object if the column is null
-    const std::shared_ptr<std::string> &getSecond8() const noexcept;
-
-    ///Set the value of the column second8
-    void setSecond8(const std::string &pSecond8) noexcept;
-    void setSecond8(std::string &&pSecond8) noexcept;
-
-
-    /**  For column second9  */
-    ///Get the value of the column second9, returns the default value if the column is null
-    const std::string &getValueOfSecond9() const noexcept;
-    ///Return a shared_ptr object pointing to the column const value, or an empty shared_ptr object if the column is null
-    const std::shared_ptr<std::string> &getSecond9() const noexcept;
-
-    ///Set the value of the column second9
-    void setSecond9(const std::string &pSecond9) noexcept;
-    void setSecond9(std::string &&pSecond9) noexcept;
-
-
-    /**  For column second10  */
-    ///Get the value of the column second10, returns the default value if the column is null
-    const std::string &getValueOfSecond10() const noexcept;
-    ///Return a shared_ptr object pointing to the column const value, or an empty shared_ptr object if the column is null
-    const std::shared_ptr<std::string> &getSecond10() const noexcept;
-
-    ///Set the value of the column second10
-    void setSecond10(const std::string &pSecond10) noexcept;
-    void setSecond10(std::string &&pSecond10) noexcept;
-
-
     /**  For column comment1  */
     ///Get the value of the column comment1, returns the default value if the column is null
     const std::string &getValueOfComment1() const noexcept;
@@ -402,7 +306,7 @@ class Menu
 
 
 
-    static size_t getColumnNumber() noexcept {  return 26;  }
+    static size_t getColumnNumber() noexcept {  return 18;  }
     static const std::string &getColumnName(size_t index) noexcept(false);
 
     Json::Value toJson() const;
@@ -424,20 +328,12 @@ class Menu
     std::shared_ptr<std::string> first4_;
     std::shared_ptr<std::string> first5_;
     std::shared_ptr<std::string> first6_;
-    std::shared_ptr<std::string> first7_;
-    std::shared_ptr<std::string> first8_;
-    std::shared_ptr<std::string> first9_;
-    std::shared_ptr<std::string> first10_;
     std::shared_ptr<std::string> second1_;
     std::shared_ptr<std::string> second2_;
     std::shared_ptr<std::string> second3_;
     std::shared_ptr<std::string> second4_;
     std::shared_ptr<std::string> second5_;
     std::shared_ptr<std::string> second6_;
-    std::shared_ptr<std::string> second7_;
-    std::shared_ptr<std::string> second8_;
-    std::shared_ptr<std::string> second9_;
-    std::shared_ptr<std::string> second10_;
     std::shared_ptr<std::string> comment1_;
     std::shared_ptr<std::string> comment2_;
     std::shared_ptr<std::string> comment3_;
@@ -453,7 +349,7 @@ class Menu
         const bool notNull_;
     };
     static const std::vector<MetaData> metaData_;
-    bool dirtyFlag_[26]={ false };
+    bool dirtyFlag_[18]={ false };
   public:
     static const std::string &sqlForFindingByPrimaryKey()
     {
@@ -508,90 +404,50 @@ class Menu
         }
         if(dirtyFlag_[8])
         {
-            sql += "first7,";
+            sql += "second1,";
             ++parametersCount;
         }
         if(dirtyFlag_[9])
         {
-            sql += "first8,";
+            sql += "second2,";
             ++parametersCount;
         }
         if(dirtyFlag_[10])
         {
-            sql += "first9,";
+            sql += "second3,";
             ++parametersCount;
         }
         if(dirtyFlag_[11])
         {
-            sql += "first10,";
+            sql += "second4,";
             ++parametersCount;
         }
         if(dirtyFlag_[12])
         {
-            sql += "second1,";
+            sql += "second5,";
             ++parametersCount;
         }
         if(dirtyFlag_[13])
         {
-            sql += "second2,";
+            sql += "second6,";
             ++parametersCount;
         }
         if(dirtyFlag_[14])
         {
-            sql += "second3,";
+            sql += "comment1,";
             ++parametersCount;
         }
         if(dirtyFlag_[15])
         {
-            sql += "second4,";
+            sql += "comment2,";
             ++parametersCount;
         }
         if(dirtyFlag_[16])
         {
-            sql += "second5,";
-            ++parametersCount;
-        }
-        if(dirtyFlag_[17])
-        {
-            sql += "second6,";
-            ++parametersCount;
-        }
-        if(dirtyFlag_[18])
-        {
-            sql += "second7,";
-            ++parametersCount;
-        }
-        if(dirtyFlag_[19])
-        {
-            sql += "second8,";
-            ++parametersCount;
-        }
-        if(dirtyFlag_[20])
-        {
-            sql += "second9,";
-            ++parametersCount;
-        }
-        if(dirtyFlag_[21])
-        {
-            sql += "second10,";
-            ++parametersCount;
-        }
-        if(dirtyFlag_[22])
-        {
-            sql += "comment1,";
-            ++parametersCount;
-        }
-        if(dirtyFlag_[23])
-        {
-            sql += "comment2,";
-            ++parametersCount;
-        }
-        if(dirtyFlag_[24])
-        {
             sql += "comment3,";
             ++parametersCount;
         }
-        if(dirtyFlag_[25])
+        if(dirtyFlag_[17])
         {
             sql += "enabled,";
             ++parametersCount;
@@ -685,46 +541,6 @@ class Menu
 
         } 
         if(dirtyFlag_[17])
-        {
-            sql.append("?,");
-
-        } 
-        if(dirtyFlag_[18])
-        {
-            sql.append("?,");
-
-        } 
-        if(dirtyFlag_[19])
-        {
-            sql.append("?,");
-
-        } 
-        if(dirtyFlag_[20])
-        {
-            sql.append("?,");
-
-        } 
-        if(dirtyFlag_[21])
-        {
-            sql.append("?,");
-
-        } 
-        if(dirtyFlag_[22])
-        {
-            sql.append("?,");
-
-        } 
-        if(dirtyFlag_[23])
-        {
-            sql.append("?,");
-
-        } 
-        if(dirtyFlag_[24])
-        {
-            sql.append("?,");
-
-        } 
-        if(dirtyFlag_[25])
         {
             sql.append("?,");
 

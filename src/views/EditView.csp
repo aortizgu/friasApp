@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<%inc
+#include "../../src/models/Menu.h"
+%>
+<%c++
+    auto menu=@@.get<drogon_model::sqlite3::Menu>("menu");
+%>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Restaurante Ortiz</title>
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/heroic-features.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+  	  <h3 style="font-weight: bold;">Restaurante Ortiz</h3>
+  	</div>
+  </nav>
+
+  <div class="container">
+    <header class="jumbotron my-4 menujumbo">
+	  <form action="/save">
+		<div class="form-group">
+		  <input id="id" name="id" type="hidden" value="{%menu.getValueOfId()%}">
+        </div>
+        <div class="form-group">
+          <label for="name">Nombre</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Nombre" value="{%menu.getValueOfName()%}">
+        </div>
+        <div class="form-group">
+          <label for="name">Primer plato 1</label>
+          <input type="text" class="form-control" id="first1" name="first1" placeholder="Primer plato 1" value="{%menu.getValueOfFirst1()%}">
+        </div>
+        <div class="form-group">
+          <label for="name">Primer plato 2</label>
+          <input type="text" class="form-control" id="first2" name="first2" placeholder="Primer plato 2" value="{%menu.getValueOfFirst2()%}">
+        </div>
+        <div class="form-group">
+          <label for="name">Primer plato 3</label>
+          <input type="text" class="form-control" id="first3" name="first3" placeholder="Primer plato 3" value="{%menu.getValueOfFirst3()%}">
+        </div>
+        <div class="form-group">
+          <label for="name">Primer plato 4</label>
+          <input type="text" class="form-control" id="first4" name="first4" placeholder="Primer plato 4" value="{%menu.getValueOfFirst4()%}">
+        </div>
+        <div class="form-group">
+          <label for="name">Primer plato 5</label>
+          <input type="text" class="form-control" id="first5" name="first5" placeholder="Primer plato 5" value="{%menu.getValueOfFirst5()%}">
+        </div>
+        <div class="form-group">
+          <label for="name">Primer plato 6</label>
+          <input type="text" class="form-control" id="first6" name="first6" placeholder="Primer plato 6" value="{%menu.getValueOfFirst6()%}">
+        </div>
+        <div class="form-group">
+          <label for="name">Segundo plato 1</label>
+          <input type="text" class="form-control" id="second1" name="second1" placeholder="Segundo plato 1" value="{%menu.getValueOfSecond1()%}">
+        </div>
+        <div class="form-group">
+          <label for="name">Segundo plato 2</label>
+          <input type="text" class="form-control" id="second2" name="second2" placeholder="Segundo plato 2" value="{%menu.getValueOfSecond2()%}">
+        </div>
+        <div class="form-group">
+          <label for="name">Segundo plato 3</label>
+          <input type="text" class="form-control" id="second3" name="second3" placeholder="Segundo plato 3" value="{%menu.getValueOfSecond3()%}">
+        </div>
+        <div class="form-group">
+          <label for="name">Segundo plato 4</label>
+          <input type="text" class="form-control" id="second4" name="second4" placeholder="Segundo plato 4" value="{%menu.getValueOfSecond4()%}">
+        </div>
+        <div class="form-group">
+          <label for="name">Segundo plato 5</label>
+          <input type="text" class="form-control" id="second5" name="second5" placeholder="Segundo plato 5" value="{%menu.getValueOfSecond5()%}">
+        </div>
+        <div class="form-group">
+          <label for="name">Segundo plato 6</label>
+          <input type="text" class="form-control" id="second6" name="second6" placeholder="Segundo plato 6" value="{%menu.getValueOfSecond6()%}">
+        </div>
+        <div class="form-group">
+          <label for="name">Fecha</label>
+          <input type="text" class="form-control" id="comment1" name="comment1" placeholder="Fecha" value="{%menu.getValueOfComment1()%}">
+        </div>
+        <div class="form-group">
+          <label for="name">Precio</label>
+          <input type="text" class="form-control" id="comment2" name="comment2" placeholder="Precio" value="{%menu.getValueOfComment2()%}">
+        </div>
+        <div class="form-group">
+          <label for="name">Comentario</label>
+          <input type="text" class="form-control" id="comment3" name="comment3" placeholder="Comentario" value="{%menu.getValueOfComment3()%}">
+        </div>
+        <div class="form-check">
+          <%c++ if(menu.getValueOfEnabled()){%>
+	      <input type="checkbox" class="form-check-input" id="enabled" name="enabled" checked>
+          <%c++ }else{%>
+          <input type="checkbox" class="form-check-input" id="enabled" name="enabled">
+		  <%c++ }%>
+	      <label class="form-check-label" for="enabled">Habilitado</label>
+	    </div>
+	    <br>
+	    <div class="form-group">
+	    	<button type="submit" class="btn btn-secondary btn-lg btn-block">Guardar</button>
+	    </div>	    
+	  </form>
+    </header>
+  </div>
+  <br>
+  <br>
+  <br>
+
+  <footer class="bg-dark footer">
+    <p class="text-center footer-text">Calle Ciudad de Frías, 2B, 28021 Madrid - 91 798 83 22</p>    
+  </footer>
+
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html

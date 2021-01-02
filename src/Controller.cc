@@ -12,30 +12,16 @@ void menuFromReq(const HttpRequestPtr &req, Menu &menu) {
     menu.setFirst4(req->getParameter("first4"));
     menu.setFirst5(req->getParameter("first5"));
     menu.setFirst6(req->getParameter("first6"));
-    menu.setFirst7(req->getParameter("first7"));
-    menu.setFirst8(req->getParameter("first8"));
-    menu.setFirst9(req->getParameter("first9"));
-    menu.setFirst10(req->getParameter("second10"));
     menu.setSecond1(req->getParameter("second1"));
     menu.setSecond2(req->getParameter("second2"));
     menu.setSecond3(req->getParameter("second3"));
     menu.setSecond4(req->getParameter("second4"));
     menu.setSecond5(req->getParameter("second5"));
     menu.setSecond6(req->getParameter("second6"));
-    menu.setSecond7(req->getParameter("second7"));
-    menu.setSecond8(req->getParameter("second8"));
-    menu.setSecond9(req->getParameter("second9"));
-    menu.setSecond10(req->getParameter("second10"));
     menu.setComment1(req->getParameter("comment1"));
     menu.setComment2(req->getParameter("comment2"));
     menu.setComment3(req->getParameter("comment3"));
-    int enabled = 0;
-    try {
-        std::string::size_type sz;
-        enabled = std::stoi(req->getParameter("enabled"), &sz);
-    } catch (...) {
-    }
-    menu.setEnabled(enabled);
+    menu.setEnabled(req->getParameter("enabled") == "on");
 }
 
 void Controller::list(const HttpRequestPtr &req,
@@ -55,20 +41,20 @@ void Controller::list(const HttpRequestPtr &req,
         }
     } catch (const DrogonDbException &e) {
         resp->setStatusCode(HttpStatusCode::k500InternalServerError);
-        LOG_ERROR << e.base().what();
+        LOG_ERROR << "Controller::list: exception " << e.base().what();
     }
     callback(resp);
 }
 
-void Controller::_admin(const HttpRequestPtr &req,
-        std::function<void(const HttpResponsePtr&)> &&callback,
-        const std::string &errorMsg) const {
+void Controller::admin(const HttpRequestPtr &req,
+        std::function<void(const HttpResponsePtr&)> &&callback) const {
     auto resp = HttpResponse::newHttpResponse();
     try {
         HttpViewData data;
         data.insert("title", "Admin");
-        if (!errorMsg.empty()) {
-            data.insert("errorMsg", errorMsg);
+
+        if (!req->getCookie("message").empty()) {
+            data.insert("message", req->getCookie("message"));
         }
 
         Mapper<Menu> mpMenu(app().getDbClient());
@@ -78,38 +64,124 @@ void Controller::_admin(const HttpRequestPtr &req,
         resp = HttpResponse::newHttpViewResponse("AdminView.csp", data);
     } catch (const DrogonDbException &e) {
         resp->setStatusCode(HttpStatusCode::k500InternalServerError);
-        LOG_ERROR << e.base().what();
+        LOG_ERROR << "Controller::_admin: exception " << e.base().what();
+    }
+    resp->addCookie("message", "");
+    callback(resp);
+}
+
+void Controller::print(const HttpRequestPtr &req,
+        std::function<void(const HttpResponsePtr&)> &&callback) const {
+    int id = 0;
+    try {
+        std::string::size_type sz;
+        id = std::stoi(req->getParameter("id"), &sz);
+    } catch (...) {
+    }
+    if (id) {
+        try {
+            Mapper<Menu> mp(app().getDbClient());
+            auto menu = mp.findByPrimaryKey(id);
+
+            LOG_INFO << "Controller::print: menu to print, name :"
+                    << menu.getValueOfName();
+
+            HttpViewData data;
+            data.insert("menu", menu);
+            auto resp = HttpResponse::newHttpViewResponse("PrintView.csp", data);
+            callback(resp);
+        } catch (const DrogonDbException &e) {
+            LOG_ERROR << "Controller::edit: exception " << e.base().what();
+            auto resp = HttpResponse::newHttpViewResponse("AdminView.csp");
+            resp->addCookie("message",
+                                    "Error, no se ha encontrado el menu id "
+                                            + req->getParameter("id"));
+            callback(resp);
+        }
+    } else {
+        auto resp = HttpResponse::newHttpViewResponse("AdminView.csp");
+        resp->addCookie("message",
+                                "Error, no se ha encontrado el menu id "
+                                        + req->getParameter("id"));
+        callback(resp);
+    }
+}
+
+void Controller::edit(const HttpRequestPtr &req,
+        std::function<void(const HttpResponsePtr&)> &&callback) const {
+    int id = 0;
+    try {
+        std::string::size_type sz;
+        id = std::stoi(req->getParameter("id"), &sz);
+    } catch (...) {
+    }
+    if (id) {
+        try {
+            Mapper<Menu> mp(app().getDbClient());
+            auto menu = mp.findByPrimaryKey(id);
+
+            LOG_INFO << "Controller::edit: menu to edit, name :"
+                    << menu.getValueOfName();
+
+            HttpViewData data;
+            data.insert("menu", menu);
+            auto resp = HttpResponse::newHttpViewResponse("EditView.csp", data);
+            callback(resp);
+        } catch (const DrogonDbException &e) {
+            LOG_ERROR << "Controller::edit: exception " << e.base().what();
+            auto resp = HttpResponse::newHttpViewResponse("EditView.csp");
+            callback(resp);
+        }
+    } else {
+        auto resp = HttpResponse::newHttpViewResponse("EditView.csp");
+        callback(resp);
+    }
+}
+
+void Controller::save(const HttpRequestPtr &req,
+        std::function<void(const HttpResponsePtr&)> &&callback) const {
+    auto resp = HttpResponse::newRedirectionResponse("/admin");
+    int id = 0;
+    try {
+        std::string::size_type sz;
+        id = std::stoi(req->getParameter("id"), &sz);
+    } catch (...) {
+    }
+    Menu menu;
+    menuFromReq(req, menu);
+    try {
+        Mapper<Menu> mp(app().getDbClient());
+        if (id) {
+            menu.setId(id);
+            if (mp.update(menu)) {
+                LOG_INFO << "Controller::save: menu updated, id " << id;
+                resp->addCookie("message",
+                        "Modificado menu id "
+                                + std::to_string(menu.getValueOfId()));
+            } else {
+                LOG_INFO << "Controller::save: menu not found, id " << id;
+                resp->addCookie("message",
+                        "Error, no se ha encontrado el menu id "
+                                + req->getParameter("id"));
+            }
+        } else {
+            mp.insert(menu);
+            LOG_INFO << "Controller::save: menu added, id "
+                    << menu.getValueOfId();
+            resp->addCookie("message",
+                    "Añadido nuevo menu id "
+                            + std::to_string(menu.getValueOfId()));
+        }
+    } catch (const DrogonDbException &e) {
+        LOG_ERROR << "Controller::update: exception " << e.base().what();
+        resp->addCookie("message", e.base().what());
     }
     callback(resp);
 }
 
-void Controller::admin(const HttpRequestPtr &req,
-        std::function<void(const HttpResponsePtr&)> &&callback) const {
-    _admin(req, std::move(callback));
-}
-
-void Controller::add(const HttpRequestPtr &req,
-        std::function<void(const HttpResponsePtr&)> &&callback) const {
-    std::string errorMsg;
-    try {
-        Menu menu;
-        menuFromReq(req, menu);
-
-        Mapper<Menu> mp(app().getDbClient());
-        mp.insert(menu);
-
-        LOG_INFO << "Controller::add: new menu inserted "
-                << menu.getValueOfName();
-    } catch (const DrogonDbException &e) {
-        LOG_ERROR << "Controller::add: exception " << e.base().what();
-        errorMsg = e.base().what();
-    }
-    _admin(req, std::move(callback), errorMsg);
-}
-
 void Controller::del(const HttpRequestPtr &req,
         std::function<void(const HttpResponsePtr&)> &&callback) const {
-    std::string errorMsg;
+    auto resp = HttpResponse::newRedirectionResponse("/admin");
     int id = 0;
     try {
         std::string::size_type sz;
@@ -121,48 +193,23 @@ void Controller::del(const HttpRequestPtr &req,
             Mapper<Menu> mp(app().getDbClient());
             if (mp.deleteByPrimaryKey(id)) {
                 LOG_INFO << "Controller::del: deleted " << id;
+                resp->addCookie("message",
+                        "Eliminado menu id " + req->getParameter("id"));
             } else {
                 LOG_INFO << "Controller::del: not found menu " << id;
-                errorMsg = "menu id " + req->getParameter("id") + " not found";
+                resp->addCookie("message",
+                        "Error, no se ha encontrado el menu id "
+                                + req->getParameter("id"));
             }
         } catch (const DrogonDbException &e) {
             LOG_ERROR << "Controller::del: exception " << e.base().what();
-            errorMsg = e.base().what();
+            resp->addCookie("message", e.base().what());
         }
     } else {
-        errorMsg = "menu id " + req->getParameter("id") + " not found";
+        LOG_ERROR << "Controller::del: no id to delete, nothing to do";
+        resp->addCookie("message",
+                "Error, no se ha encontrado el menu id "
+                        + req->getParameter("id"));
     }
-    _admin(req, std::move(callback), errorMsg);
-}
-
-void Controller::update(const HttpRequestPtr &req,
-        std::function<void(const HttpResponsePtr&)> &&callback) const {
-    std::string errorMsg;
-    int id = 0;
-    try {
-        std::string::size_type sz;
-        id = std::stoi(req->getParameter("id"), &sz);
-    } catch (...) {
-    }
-    if (id) {
-        try {
-            Menu menu;
-            menu.setId(id);
-            menuFromReq(req, menu);
-
-            Mapper<Menu> mp(app().getDbClient());
-            if (mp.update(menu)) {
-                LOG_INFO << "Controller::update: menu updated, id " << id;
-            } else {
-                LOG_INFO << "Controller::update: menu not found, id " << id;
-                errorMsg = "menu id " + req->getParameter("id") + " not found";
-            }
-        } catch (const DrogonDbException &e) {
-            LOG_ERROR << "Controller::update: exception " << e.base().what();
-            errorMsg = e.base().what();
-        }
-    } else {
-        errorMsg = "menu id " + req->getParameter("id") + " not found";
-    }
-    _admin(req, std::move(callback), errorMsg);
+    callback(resp);
 }

@@ -1,0 +1,89 @@
+@page {
+	size: A4;
+	margin: 0;
+}
+body {
+	font: 10pt "Verdana", sans-serif;
+	text-align: center;
+    width: 210mm;
+    height: 297mm;
+    color: #000000 ;
+    background: #ffffff ;
+}
+span {
+	font-size: 16pt;
+}
+form {
+	text-align: center;
+	font: 10 "Verdana", sans-serif;
+}
+
+header {display:none;}
+.page {
+	position: relative;
+	width: 210mm;
+	min-height: 297mm;
+	max-height: 297mm;
+	padding: 20mm;
+	margin: 10mm auto;
+    page-break-after: always;
+}
+div.absolute {
+	position: absolute;
+	bottom: 0%;
+	left: auto;
+}
+div.preAbsolute {
+	position: absolute;
+	bottom: 6%;
+}
+H1 {
+	font: bold 45px;
+	text-align:center;
+}
+H2 {
+	font: bold 38px;
+	text-align:center;
+}
+H3 {font: 22pt "Verdana", sans-serif;}
+P {
+	color: #000000;
+	align:center ;
+}
+#LOGO{
+	text-align:center;
+	font: bold 44pt "Verdana", sans-serif;
+}
+#BARRA{
+	color: #;
+	width: '80%';
+	size: '8';
+	align: 'center';
+}
+#DATE{font: bold 20pt "Verdana", sans-serif;}
+#NOMBRE{font: bold 32pt "Verdana", sans-serif;}
+#PLATO{font: italic 21pt "Verdana", sans-serif;}
+#PRECIO{font: 20pt "Verdana", sans-serif;}
+#PIE{
+	color: #000000;
+	font: 8pt "Verdana", sans-serif;
+	text-align:left;
+}
+hr.separador{
+	height: 30px;
+	border-style: solid;
+	border-color: black;
+	border-width: 1px 0 0 0;
+	border-radius: 20px;
+}
+hr.separador:before {
+	display: block;
+	content: "";
+	height: 30px;
+	margin-top: -31px;
+	border-style: solid;
+	border-color: black;
+	border-width: 0 0 1px 0;
+	border-radius: 20px;
+}
+

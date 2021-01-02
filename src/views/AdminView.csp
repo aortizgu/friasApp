@@ -1,84 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <%inc
 #include "../../src/models/Menu.h"
 %>
 <%c++
     auto menus=@@.get<std::vector<drogon_model::sqlite3::Menu>>("menus");
-    auto errorMsg=@@.get<std::string>("errorMsg");
+    auto message=@@.get<std::string>("message");
 %>
 <head>
-    <meta charset="UTF-8">
-    <title>[[ title ]]</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Restaurante Ortiz</title>
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/heroic-features.css" rel="stylesheet">
 </head>
+
 <body>
-	<%c++ if(!errorMsg.empty()){%>
-	<H1>ERROR: {%errorMsg%}</H1>
-	<%c++}%>
-    <%c++ if(!menus.empty()){%>
-    <H1>Menu</H1>
-    <table border="1">
-      <tr>
-        <th>id</th>
-        <th>name</th>
-        <th>first1</th>
-        <th>first2</th>
-        <th>first3</th>
-        <th>first4</th>
-        <th>first5</th>
-        <th>first6</th>
-        <th>first7</th>
-        <th>first8</th>
-        <th>first9</th>
-        <th>first10</th>
-        <th>second1</th>
-        <th>second2</th>
-        <th>second3</th>
-        <th>second4</th>
-        <th>second5</th>
-        <th>second6</th>
-        <th>second7</th>
-        <th>second8</th>
-        <th>second9</th>
-        <th>second10</th>
-        <th>comment1</th>
-        <th>comment2</th>
-        <th>comment3</th>
-        <th>enabled</th>        
-      </tr>
-      <%c++ for(auto menu:menus){%>
-      <tr>
-        <td>{%menu.getValueOfId()%}</td>
-        <td>{%menu.getValueOfName()%}</td>
-        <td>{%menu.getValueOfFirst1()%}</td>
-        <td>{%menu.getValueOfFirst2()%}</td>
-        <td>{%menu.getValueOfFirst3()%}</td>
-        <td>{%menu.getValueOfFirst4()%}</td>
-        <td>{%menu.getValueOfFirst5()%}</td>
-        <td>{%menu.getValueOfFirst6()%}</td>
-        <td>{%menu.getValueOfFirst7()%}</td>
-        <td>{%menu.getValueOfFirst8()%}</td>
-        <td>{%menu.getValueOfFirst9()%}</td>
-        <td>{%menu.getValueOfFirst10()%}</td>
-        <td>{%menu.getValueOfSecond1()%}</td>
-        <td>{%menu.getValueOfSecond2()%}</td>
-        <td>{%menu.getValueOfSecond3()%}</td>
-        <td>{%menu.getValueOfSecond4()%}</td>
-        <td>{%menu.getValueOfSecond5()%}</td>
-        <td>{%menu.getValueOfSecond6()%}</td>
-        <td>{%menu.getValueOfSecond7()%}</td>
-        <td>{%menu.getValueOfSecond8()%}</td>
-        <td>{%menu.getValueOfSecond9()%}</td>
-        <td>{%menu.getValueOfSecond10()%}</td>
-        <td>{%menu.getValueOfComment1()%}</td>
-        <td>{%menu.getValueOfComment2()%}</td>
-        <td>{%menu.getValueOfComment3()%}</td>
-        <td>{%menu.getValueOfEnabled()%}</td>
-      </tr>
-      <%c++}%>
-    </table>
-    <%c++ }else{%>
-    <H1>no menus</H1>
-    <%c++}%>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+  	  <h3 style="font-weight: bold;">Restaurante Ortiz</h3>
+  	</div>
+  </nav>
+
+  <div class="container">
+    <header class="jumbotron my-4 menujumbo">
+      <%c++ if(!message.empty()){%>
+      	<div class="alert alert-primary" role="alert">{%message%}</div>
+      <%c++ }%>
+      <table class="table">
+	    <tr>
+	      <th>Id</th>
+	      <th>Nombre</th>
+	      <th>Habilitado</th>
+	      <th></th>
+	      <th></th>
+	      <th></th>
+	    </tr>
+        <%c++ for(auto menu:menus){%>
+        <tr>
+          <td>{%menu.getValueOfId()%}</td>
+          <td>{%menu.getValueOfName()%}</td>
+		  <%c++ if(menu.getValueOfEnabled()){%>
+          <td>Si</td>
+		  <%c++ }else{%>
+		  <td>No</td>
+		  <%c++ }%>
+		  <td><a href="/print?id={%menu.getValueOfId()%}">Imprimir</a></td>
+          <td><a href="/edit?id={%menu.getValueOfId()%}">Editar</a></td>
+          <td><a href="/del?id={%menu.getValueOfId()%}">Eliminar</a></td>
+        </tr>
+        <%c++}%>
+      </table>
+      <button type="button" class="btn btn-secondary btn-lg btn-block"><a href="/edit" style="color:inherit">Añadir</a></button>
+    </header>
+  </div>
+  <br>
+  <br>
+  <br>
+
+  <footer class="bg-dark footer">
+    <p class="text-center footer-text">Calle Ciudad de Frías, 2B, 28021 Madrid - 91 798 83 22</p>    
+  </footer>
+
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
-</html>
+
+</html

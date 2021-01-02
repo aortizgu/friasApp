@@ -1,0 +1,56 @@
+/*!
+ * Start Bootstrap - Heroic Features (https://startbootstrap.com/template/heroic-features)
+ * Copyright 2013-2020 Start Bootstrap
+ * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-heroic-features/blob/master/LICENSE)
+ */
+body {
+  padding-top: 56px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color:#910808;
+  color: #dfc018;
+}
+
+.jumbotron {
+  color: #dfc018;
+  background-color: #710606 !important;
+}
+
+.table {
+  color: #dfc018;
+}
+
+.a {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.bg-dark {
+  background-color: #710606 !important;
+}
+
+.display-3 {
+  position: absolute;
+}
+
+.comment {
+  font-weight: bold;
+}
+
+.enum {
+  font-style: italic;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border-top: 4px solid #dfc018;
+}
+
+.footer-text {
+  margin-top: 10px;
+}
+
+.fixed-top {
+  border-bottom: 4px solid #dfc018;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<%inc
+#include "../../src/models/Menu.h"
+%>
+<%c++
+    auto menu=@@.get<drogon_model::sqlite3::Menu>("menu");
+%>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+	<title>Imprimir menú</title>
+	<link rel="stylesheet" type="text/css" href="css/print.css">
+</head>
+
+<body>
+  <section class="contenido wrapper">
+    <div class='page'>
+      <h2 id='LOGO'>RESTAURANTE ORTIZ</h2>
+      <hr class='separador'>
+      <h2><span id='NOMBRE'><b>{%menu.getValueOfName()%}</b></span><br><span id='DATE'>| {%menu.getValueOfComment1()%} |</span></h2>
+      <h3><u>Primeros Platos: </u></h3>
+      <%c++ if(!menu.getValueOfFirst1().empty()){%>
+      <p id='PLATO'>{%menu.getValueOfFirst1()%}</p>
+      <%c++}%>
+      <%c++ if(!menu.getValueOfFirst2().empty()){%>
+      <p id='PLATO'>{%menu.getValueOfFirst2()%}</p>
+      <%c++}%>
+      <%c++ if(!menu.getValueOfFirst3().empty()){%>
+      <p id='PLATO'>{%menu.getValueOfFirst3()%}</p>
+      <%c++}%>
+      <%c++ if(!menu.getValueOfFirst4().empty()){%>
+      <p id='PLATO'>{%menu.getValueOfFirst4()%}</p>
+      <%c++}%>
+      <%c++ if(!menu.getValueOfFirst5().empty()){%>
+      <p id='PLATO'>{%menu.getValueOfFirst5()%}</p>
+      <%c++}%>
+      <%c++ if(!menu.getValueOfFirst6().empty()){%>
+      <p id='PLATO'>{%menu.getValueOfFirst6()%}</p>
+      <%c++}%>
+      <h3><u>Segundos Platos: </u></h3>
+      <%c++ if(!menu.getValueOfSecond1().empty()){%>
+      <p id='PLATO'>{%menu.getValueOfSecond1()%}</p>
+      <%c++}%>
+      <%c++ if(!menu.getValueOfSecond2().empty()){%>
+      <p id='PLATO'>{%menu.getValueOfSecond2()%}</p>
+      <%c++}%>
+      <%c++ if(!menu.getValueOfSecond3().empty()){%>
+      <p id='PLATO'>{%menu.getValueOfSecond3()%}</p>
+      <%c++}%>
+      <%c++ if(!menu.getValueOfSecond4().empty()){%>
+      <p id='PLATO'>{%menu.getValueOfSecond4()%}</p>
+      <%c++}%>
+      <%c++ if(!menu.getValueOfSecond5().empty()){%>
+      <p id='PLATO'>{%menu.getValueOfSecond5()%}</p>
+      <%c++}%>
+      <%c++ if(!menu.getValueOfSecond6().empty()){%>
+      <p id='PLATO'>{%menu.getValueOfSecond6()%}</p>
+      <%c++}%>
+      <div class='preAbsolute'>
+        <%c++ if(!menu.getValueOfComment2().empty()){%>
+        <br><br><p id='PRECIO'>{%menu.getValueOfComment2()%}</p>
+        <%c++}%>
+        <%c++ if(!menu.getValueOfComment3().empty()){%>
+        <p>{%menu.getValueOfComment3()%}</p>
+        <%c++}%>
+      </div>
+      <div class='absolute'>
+        <p style="text-indent: -2em;">Disponemos de carta de alérgenos, pregunte a nuestro personal.<br>En nuestros platos a la plancha/parrilla con salsa, ésta será opcional.</p>
+        <p id='PIE'>Este Menú se publica diariamente en: www.restauranteortiz.ddns.net</p>
+      </div>
+    </div>
+  </section>
+  <script type='text/javascript'>window.print();</script>
+</body>
+
+</html

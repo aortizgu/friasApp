@@ -20,20 +20,12 @@ const std::string Menu::Cols::_first3 = "first3";
 const std::string Menu::Cols::_first4 = "first4";
 const std::string Menu::Cols::_first5 = "first5";
 const std::string Menu::Cols::_first6 = "first6";
-const std::string Menu::Cols::_first7 = "first7";
-const std::string Menu::Cols::_first8 = "first8";
-const std::string Menu::Cols::_first9 = "first9";
-const std::string Menu::Cols::_first10 = "first10";
 const std::string Menu::Cols::_second1 = "second1";
 const std::string Menu::Cols::_second2 = "second2";
 const std::string Menu::Cols::_second3 = "second3";
 const std::string Menu::Cols::_second4 = "second4";
 const std::string Menu::Cols::_second5 = "second5";
 const std::string Menu::Cols::_second6 = "second6";
-const std::string Menu::Cols::_second7 = "second7";
-const std::string Menu::Cols::_second8 = "second8";
-const std::string Menu::Cols::_second9 = "second9";
-const std::string Menu::Cols::_second10 = "second10";
 const std::string Menu::Cols::_comment1 = "comment1";
 const std::string Menu::Cols::_comment2 = "comment2";
 const std::string Menu::Cols::_comment3 = "comment3";
@@ -51,20 +43,12 @@ const std::vector<typename Menu::MetaData> Menu::metaData_={
 {"first4","std::string","text",0,0,0,1},
 {"first5","std::string","text",0,0,0,1},
 {"first6","std::string","text",0,0,0,1},
-{"first7","std::string","text",0,0,0,1},
-{"first8","std::string","text",0,0,0,1},
-{"first9","std::string","text",0,0,0,1},
-{"first10","std::string","text",0,0,0,1},
 {"second1","std::string","text",0,0,0,1},
 {"second2","std::string","text",0,0,0,1},
 {"second3","std::string","text",0,0,0,1},
 {"second4","std::string","text",0,0,0,1},
 {"second5","std::string","text",0,0,0,1},
 {"second6","std::string","text",0,0,0,1},
-{"second7","std::string","text",0,0,0,1},
-{"second8","std::string","text",0,0,0,1},
-{"second9","std::string","text",0,0,0,1},
-{"second10","std::string","text",0,0,0,1},
 {"comment1","std::string","text",0,0,0,1},
 {"comment2","std::string","text",0,0,0,1},
 {"comment3","std::string","text",0,0,0,1},
@@ -111,22 +95,6 @@ Menu::Menu(const Row &r, const ssize_t indexOffset) noexcept
         {
             first6_=std::make_shared<std::string>(r["first6"].as<std::string>());
         }
-        if(!r["first7"].isNull())
-        {
-            first7_=std::make_shared<std::string>(r["first7"].as<std::string>());
-        }
-        if(!r["first8"].isNull())
-        {
-            first8_=std::make_shared<std::string>(r["first8"].as<std::string>());
-        }
-        if(!r["first9"].isNull())
-        {
-            first9_=std::make_shared<std::string>(r["first9"].as<std::string>());
-        }
-        if(!r["first10"].isNull())
-        {
-            first10_=std::make_shared<std::string>(r["first10"].as<std::string>());
-        }
         if(!r["second1"].isNull())
         {
             second1_=std::make_shared<std::string>(r["second1"].as<std::string>());
@@ -151,22 +119,6 @@ Menu::Menu(const Row &r, const ssize_t indexOffset) noexcept
         {
             second6_=std::make_shared<std::string>(r["second6"].as<std::string>());
         }
-        if(!r["second7"].isNull())
-        {
-            second7_=std::make_shared<std::string>(r["second7"].as<std::string>());
-        }
-        if(!r["second8"].isNull())
-        {
-            second8_=std::make_shared<std::string>(r["second8"].as<std::string>());
-        }
-        if(!r["second9"].isNull())
-        {
-            second9_=std::make_shared<std::string>(r["second9"].as<std::string>());
-        }
-        if(!r["second10"].isNull())
-        {
-            second10_=std::make_shared<std::string>(r["second10"].as<std::string>());
-        }
         if(!r["comment1"].isNull())
         {
             comment1_=std::make_shared<std::string>(r["comment1"].as<std::string>());
@@ -187,7 +139,7 @@ Menu::Menu(const Row &r, const ssize_t indexOffset) noexcept
     else
     {
         size_t offset = (size_t)indexOffset;
-        if(offset + 26 > r.size())
+        if(offset + 18 > r.size())
         {
             LOG_FATAL << "Invalid SQL result for this model";
             return;
@@ -236,89 +188,49 @@ Menu::Menu(const Row &r, const ssize_t indexOffset) noexcept
         index = offset + 8;
         if(!r[index].isNull())
         {
-            first7_=std::make_shared<std::string>(r[index].as<std::string>());
+            second1_=std::make_shared<std::string>(r[index].as<std::string>());
         }
         index = offset + 9;
         if(!r[index].isNull())
         {
-            first8_=std::make_shared<std::string>(r[index].as<std::string>());
+            second2_=std::make_shared<std::string>(r[index].as<std::string>());
         }
         index = offset + 10;
         if(!r[index].isNull())
         {
-            first9_=std::make_shared<std::string>(r[index].as<std::string>());
+            second3_=std::make_shared<std::string>(r[index].as<std::string>());
         }
         index = offset + 11;
         if(!r[index].isNull())
         {
-            first10_=std::make_shared<std::string>(r[index].as<std::string>());
+            second4_=std::make_shared<std::string>(r[index].as<std::string>());
         }
         index = offset + 12;
         if(!r[index].isNull())
         {
-            second1_=std::make_shared<std::string>(r[index].as<std::string>());
+            second5_=std::make_shared<std::string>(r[index].as<std::string>());
         }
         index = offset + 13;
         if(!r[index].isNull())
         {
-            second2_=std::make_shared<std::string>(r[index].as<std::string>());
+            second6_=std::make_shared<std::string>(r[index].as<std::string>());
         }
         index = offset + 14;
         if(!r[index].isNull())
         {
-            second3_=std::make_shared<std::string>(r[index].as<std::string>());
+            comment1_=std::make_shared<std::string>(r[index].as<std::string>());
         }
         index = offset + 15;
         if(!r[index].isNull())
         {
-            second4_=std::make_shared<std::string>(r[index].as<std::string>());
+            comment2_=std::make_shared<std::string>(r[index].as<std::string>());
         }
         index = offset + 16;
         if(!r[index].isNull())
         {
-            second5_=std::make_shared<std::string>(r[index].as<std::string>());
-        }
-        index = offset + 17;
-        if(!r[index].isNull())
-        {
-            second6_=std::make_shared<std::string>(r[index].as<std::string>());
-        }
-        index = offset + 18;
-        if(!r[index].isNull())
-        {
-            second7_=std::make_shared<std::string>(r[index].as<std::string>());
-        }
-        index = offset + 19;
-        if(!r[index].isNull())
-        {
-            second8_=std::make_shared<std::string>(r[index].as<std::string>());
-        }
-        index = offset + 20;
-        if(!r[index].isNull())
-        {
-            second9_=std::make_shared<std::string>(r[index].as<std::string>());
-        }
-        index = offset + 21;
-        if(!r[index].isNull())
-        {
-            second10_=std::make_shared<std::string>(r[index].as<std::string>());
-        }
-        index = offset + 22;
-        if(!r[index].isNull())
-        {
-            comment1_=std::make_shared<std::string>(r[index].as<std::string>());
-        }
-        index = offset + 23;
-        if(!r[index].isNull())
-        {
-            comment2_=std::make_shared<std::string>(r[index].as<std::string>());
-        }
-        index = offset + 24;
-        if(!r[index].isNull())
-        {
             comment3_=std::make_shared<std::string>(r[index].as<std::string>());
         }
-        index = offset + 25;
+        index = offset + 17;
         if(!r[index].isNull())
         {
             enabled_=std::make_shared<uint64_t>(r[index].as<uint64_t>());
@@ -329,7 +241,7 @@ Menu::Menu(const Row &r, const ssize_t indexOffset) noexcept
 
 Menu::Menu(const Json::Value &pJson, const std::vector<std::string> &pMasqueradingVector) noexcept(false)
 {
-    if(pMasqueradingVector.size() != 26)
+    if(pMasqueradingVector.size() != 18)
     {
         LOG_ERROR << "Bad masquerading vector";
         return;
@@ -403,7 +315,7 @@ Menu::Menu(const Json::Value &pJson, const std::vector<std::string> &pMasqueradi
         dirtyFlag_[8] = true;
         if(!pJson[pMasqueradingVector[8]].isNull())
         {
-            first7_=std::make_shared<std::string>(pJson[pMasqueradingVector[8]].asString());
+            second1_=std::make_shared<std::string>(pJson[pMasqueradingVector[8]].asString());
         }
     }
     if(!pMasqueradingVector[9].empty() && pJson.isMember(pMasqueradingVector[9]))
@@ -411,7 +323,7 @@ Menu::Menu(const Json::Value &pJson, const std::vector<std::string> &pMasqueradi
         dirtyFlag_[9] = true;
         if(!pJson[pMasqueradingVector[9]].isNull())
         {
-            first8_=std::make_shared<std::string>(pJson[pMasqueradingVector[9]].asString());
+            second2_=std::make_shared<std::string>(pJson[pMasqueradingVector[9]].asString());
         }
     }
     if(!pMasqueradingVector[10].empty() && pJson.isMember(pMasqueradingVector[10]))
@@ -419,7 +331,7 @@ Menu::Menu(const Json::Value &pJson, const std::vector<std::string> &pMasqueradi
         dirtyFlag_[10] = true;
         if(!pJson[pMasqueradingVector[10]].isNull())
         {
-            first9_=std::make_shared<std::string>(pJson[pMasqueradingVector[10]].asString());
+            second3_=std::make_shared<std::string>(pJson[pMasqueradingVector[10]].asString());
         }
     }
     if(!pMasqueradingVector[11].empty() && pJson.isMember(pMasqueradingVector[11]))
@@ -427,7 +339,7 @@ Menu::Menu(const Json::Value &pJson, const std::vector<std::string> &pMasqueradi
         dirtyFlag_[11] = true;
         if(!pJson[pMasqueradingVector[11]].isNull())
         {
-            first10_=std::make_shared<std::string>(pJson[pMasqueradingVector[11]].asString());
+            second4_=std::make_shared<std::string>(pJson[pMasqueradingVector[11]].asString());
         }
     }
     if(!pMasqueradingVector[12].empty() && pJson.isMember(pMasqueradingVector[12]))
@@ -435,7 +347,7 @@ Menu::Menu(const Json::Value &pJson, const std::vector<std::string> &pMasqueradi
         dirtyFlag_[12] = true;
         if(!pJson[pMasqueradingVector[12]].isNull())
         {
-            second1_=std::make_shared<std::string>(pJson[pMasqueradingVector[12]].asString());
+            second5_=std::make_shared<std::string>(pJson[pMasqueradingVector[12]].asString());
         }
     }
     if(!pMasqueradingVector[13].empty() && pJson.isMember(pMasqueradingVector[13]))
@@ -443,7 +355,7 @@ Menu::Menu(const Json::Value &pJson, const std::vector<std::string> &pMasqueradi
         dirtyFlag_[13] = true;
         if(!pJson[pMasqueradingVector[13]].isNull())
         {
-            second2_=std::make_shared<std::string>(pJson[pMasqueradingVector[13]].asString());
+            second6_=std::make_shared<std::string>(pJson[pMasqueradingVector[13]].asString());
         }
     }
     if(!pMasqueradingVector[14].empty() && pJson.isMember(pMasqueradingVector[14]))
@@ -451,7 +363,7 @@ Menu::Menu(const Json::Value &pJson, const std::vector<std::string> &pMasqueradi
         dirtyFlag_[14] = true;
         if(!pJson[pMasqueradingVector[14]].isNull())
         {
-            second3_=std::make_shared<std::string>(pJson[pMasqueradingVector[14]].asString());
+            comment1_=std::make_shared<std::string>(pJson[pMasqueradingVector[14]].asString());
         }
     }
     if(!pMasqueradingVector[15].empty() && pJson.isMember(pMasqueradingVector[15]))
@@ -459,7 +371,7 @@ Menu::Menu(const Json::Value &pJson, const std::vector<std::string> &pMasqueradi
         dirtyFlag_[15] = true;
         if(!pJson[pMasqueradingVector[15]].isNull())
         {
-            second4_=std::make_shared<std::string>(pJson[pMasqueradingVector[15]].asString());
+            comment2_=std::make_shared<std::string>(pJson[pMasqueradingVector[15]].asString());
         }
     }
     if(!pMasqueradingVector[16].empty() && pJson.isMember(pMasqueradingVector[16]))
@@ -467,7 +379,7 @@ Menu::Menu(const Json::Value &pJson, const std::vector<std::string> &pMasqueradi
         dirtyFlag_[16] = true;
         if(!pJson[pMasqueradingVector[16]].isNull())
         {
-            second5_=std::make_shared<std::string>(pJson[pMasqueradingVector[16]].asString());
+            comment3_=std::make_shared<std::string>(pJson[pMasqueradingVector[16]].asString());
         }
     }
     if(!pMasqueradingVector[17].empty() && pJson.isMember(pMasqueradingVector[17]))
@@ -475,71 +387,7 @@ Menu::Menu(const Json::Value &pJson, const std::vector<std::string> &pMasqueradi
         dirtyFlag_[17] = true;
         if(!pJson[pMasqueradingVector[17]].isNull())
         {
-            second6_=std::make_shared<std::string>(pJson[pMasqueradingVector[17]].asString());
-        }
-    }
-    if(!pMasqueradingVector[18].empty() && pJson.isMember(pMasqueradingVector[18]))
-    {
-        dirtyFlag_[18] = true;
-        if(!pJson[pMasqueradingVector[18]].isNull())
-        {
-            second7_=std::make_shared<std::string>(pJson[pMasqueradingVector[18]].asString());
-        }
-    }
-    if(!pMasqueradingVector[19].empty() && pJson.isMember(pMasqueradingVector[19]))
-    {
-        dirtyFlag_[19] = true;
-        if(!pJson[pMasqueradingVector[19]].isNull())
-        {
-            second8_=std::make_shared<std::string>(pJson[pMasqueradingVector[19]].asString());
-        }
-    }
-    if(!pMasqueradingVector[20].empty() && pJson.isMember(pMasqueradingVector[20]))
-    {
-        dirtyFlag_[20] = true;
-        if(!pJson[pMasqueradingVector[20]].isNull())
-        {
-            second9_=std::make_shared<std::string>(pJson[pMasqueradingVector[20]].asString());
-        }
-    }
-    if(!pMasqueradingVector[21].empty() && pJson.isMember(pMasqueradingVector[21]))
-    {
-        dirtyFlag_[21] = true;
-        if(!pJson[pMasqueradingVector[21]].isNull())
-        {
-            second10_=std::make_shared<std::string>(pJson[pMasqueradingVector[21]].asString());
-        }
-    }
-    if(!pMasqueradingVector[22].empty() && pJson.isMember(pMasqueradingVector[22]))
-    {
-        dirtyFlag_[22] = true;
-        if(!pJson[pMasqueradingVector[22]].isNull())
-        {
-            comment1_=std::make_shared<std::string>(pJson[pMasqueradingVector[22]].asString());
-        }
-    }
-    if(!pMasqueradingVector[23].empty() && pJson.isMember(pMasqueradingVector[23]))
-    {
-        dirtyFlag_[23] = true;
-        if(!pJson[pMasqueradingVector[23]].isNull())
-        {
-            comment2_=std::make_shared<std::string>(pJson[pMasqueradingVector[23]].asString());
-        }
-    }
-    if(!pMasqueradingVector[24].empty() && pJson.isMember(pMasqueradingVector[24]))
-    {
-        dirtyFlag_[24] = true;
-        if(!pJson[pMasqueradingVector[24]].isNull())
-        {
-            comment3_=std::make_shared<std::string>(pJson[pMasqueradingVector[24]].asString());
-        }
-    }
-    if(!pMasqueradingVector[25].empty() && pJson.isMember(pMasqueradingVector[25]))
-    {
-        dirtyFlag_[25] = true;
-        if(!pJson[pMasqueradingVector[25]].isNull())
-        {
-            enabled_=std::make_shared<uint64_t>((uint64_t)pJson[pMasqueradingVector[25]].asUInt64());
+            enabled_=std::make_shared<uint64_t>((uint64_t)pJson[pMasqueradingVector[17]].asUInt64());
         }
     }
 }
@@ -610,41 +458,9 @@ Menu::Menu(const Json::Value &pJson) noexcept(false)
             first6_=std::make_shared<std::string>(pJson["first6"].asString());
         }
     }
-    if(pJson.isMember("first7"))
-    {
-        dirtyFlag_[8]=true;
-        if(!pJson["first7"].isNull())
-        {
-            first7_=std::make_shared<std::string>(pJson["first7"].asString());
-        }
-    }
-    if(pJson.isMember("first8"))
-    {
-        dirtyFlag_[9]=true;
-        if(!pJson["first8"].isNull())
-        {
-            first8_=std::make_shared<std::string>(pJson["first8"].asString());
-        }
-    }
-    if(pJson.isMember("first9"))
-    {
-        dirtyFlag_[10]=true;
-        if(!pJson["first9"].isNull())
-        {
-            first9_=std::make_shared<std::string>(pJson["first9"].asString());
-        }
-    }
-    if(pJson.isMember("first10"))
-    {
-        dirtyFlag_[11]=true;
-        if(!pJson["first10"].isNull())
-        {
-            first10_=std::make_shared<std::string>(pJson["first10"].asString());
-        }
-    }
     if(pJson.isMember("second1"))
     {
-        dirtyFlag_[12]=true;
+        dirtyFlag_[8]=true;
         if(!pJson["second1"].isNull())
         {
             second1_=std::make_shared<std::string>(pJson["second1"].asString());
@@ -652,7 +468,7 @@ Menu::Menu(const Json::Value &pJson) noexcept(false)
     }
     if(pJson.isMember("second2"))
     {
-        dirtyFlag_[13]=true;
+        dirtyFlag_[9]=true;
         if(!pJson["second2"].isNull())
         {
             second2_=std::make_shared<std::string>(pJson["second2"].asString());
@@ -660,7 +476,7 @@ Menu::Menu(const Json::Value &pJson) noexcept(false)
     }
     if(pJson.isMember("second3"))
     {
-        dirtyFlag_[14]=true;
+        dirtyFlag_[10]=true;
         if(!pJson["second3"].isNull())
         {
             second3_=std::make_shared<std::string>(pJson["second3"].asString());
@@ -668,7 +484,7 @@ Menu::Menu(const Json::Value &pJson) noexcept(false)
     }
     if(pJson.isMember("second4"))
     {
-        dirtyFlag_[15]=true;
+        dirtyFlag_[11]=true;
         if(!pJson["second4"].isNull())
         {
             second4_=std::make_shared<std::string>(pJson["second4"].asString());
@@ -676,7 +492,7 @@ Menu::Menu(const Json::Value &pJson) noexcept(false)
     }
     if(pJson.isMember("second5"))
     {
-        dirtyFlag_[16]=true;
+        dirtyFlag_[12]=true;
         if(!pJson["second5"].isNull())
         {
             second5_=std::make_shared<std::string>(pJson["second5"].asString());
@@ -684,47 +500,15 @@ Menu::Menu(const Json::Value &pJson) noexcept(false)
     }
     if(pJson.isMember("second6"))
     {
-        dirtyFlag_[17]=true;
+        dirtyFlag_[13]=true;
         if(!pJson["second6"].isNull())
         {
             second6_=std::make_shared<std::string>(pJson["second6"].asString());
         }
     }
-    if(pJson.isMember("second7"))
-    {
-        dirtyFlag_[18]=true;
-        if(!pJson["second7"].isNull())
-        {
-            second7_=std::make_shared<std::string>(pJson["second7"].asString());
-        }
-    }
-    if(pJson.isMember("second8"))
-    {
-        dirtyFlag_[19]=true;
-        if(!pJson["second8"].isNull())
-        {
-            second8_=std::make_shared<std::string>(pJson["second8"].asString());
-        }
-    }
-    if(pJson.isMember("second9"))
-    {
-        dirtyFlag_[20]=true;
-        if(!pJson["second9"].isNull())
-        {
-            second9_=std::make_shared<std::string>(pJson["second9"].asString());
-        }
-    }
-    if(pJson.isMember("second10"))
-    {
-        dirtyFlag_[21]=true;
-        if(!pJson["second10"].isNull())
-        {
-            second10_=std::make_shared<std::string>(pJson["second10"].asString());
-        }
-    }
     if(pJson.isMember("comment1"))
     {
-        dirtyFlag_[22]=true;
+        dirtyFlag_[14]=true;
         if(!pJson["comment1"].isNull())
         {
             comment1_=std::make_shared<std::string>(pJson["comment1"].asString());
@@ -732,7 +516,7 @@ Menu::Menu(const Json::Value &pJson) noexcept(false)
     }
     if(pJson.isMember("comment2"))
     {
-        dirtyFlag_[23]=true;
+        dirtyFlag_[15]=true;
         if(!pJson["comment2"].isNull())
         {
             comment2_=std::make_shared<std::string>(pJson["comment2"].asString());
@@ -740,7 +524,7 @@ Menu::Menu(const Json::Value &pJson) noexcept(false)
     }
     if(pJson.isMember("comment3"))
     {
-        dirtyFlag_[24]=true;
+        dirtyFlag_[16]=true;
         if(!pJson["comment3"].isNull())
         {
             comment3_=std::make_shared<std::string>(pJson["comment3"].asString());
@@ -748,7 +532,7 @@ Menu::Menu(const Json::Value &pJson) noexcept(false)
     }
     if(pJson.isMember("enabled"))
     {
-        dirtyFlag_[25]=true;
+        dirtyFlag_[17]=true;
         if(!pJson["enabled"].isNull())
         {
             enabled_=std::make_shared<uint64_t>((uint64_t)pJson["enabled"].asUInt64());
@@ -759,7 +543,7 @@ Menu::Menu(const Json::Value &pJson) noexcept(false)
 void Menu::updateByMasqueradedJson(const Json::Value &pJson,
                                             const std::vector<std::string> &pMasqueradingVector) noexcept(false)
 {
-    if(pMasqueradingVector.size() != 26)
+    if(pMasqueradingVector.size() != 18)
     {
         LOG_ERROR << "Bad masquerading vector";
         return;
@@ -832,7 +616,7 @@ void Menu::updateByMasqueradedJson(const Json::Value &pJson,
         dirtyFlag_[8] = true;
         if(!pJson[pMasqueradingVector[8]].isNull())
         {
-            first7_=std::make_shared<std::string>(pJson[pMasqueradingVector[8]].asString());
+            second1_=std::make_shared<std::string>(pJson[pMasqueradingVector[8]].asString());
         }
     }
     if(!pMasqueradingVector[9].empty() && pJson.isMember(pMasqueradingVector[9]))
@@ -840,7 +624,7 @@ void Menu::updateByMasqueradedJson(const Json::Value &pJson,
         dirtyFlag_[9] = true;
         if(!pJson[pMasqueradingVector[9]].isNull())
         {
-            first8_=std::make_shared<std::string>(pJson[pMasqueradingVector[9]].asString());
+            second2_=std::make_shared<std::string>(pJson[pMasqueradingVector[9]].asString());
         }
     }
     if(!pMasqueradingVector[10].empty() && pJson.isMember(pMasqueradingVector[10]))
@@ -848,7 +632,7 @@ void Menu::updateByMasqueradedJson(const Json::Value &pJson,
         dirtyFlag_[10] = true;
         if(!pJson[pMasqueradingVector[10]].isNull())
         {
-            first9_=std::make_shared<std::string>(pJson[pMasqueradingVector[10]].asString());
+            second3_=std::make_shared<std::string>(pJson[pMasqueradingVector[10]].asString());
         }
     }
     if(!pMasqueradingVector[11].empty() && pJson.isMember(pMasqueradingVector[11]))
@@ -856,7 +640,7 @@ void Menu::updateByMasqueradedJson(const Json::Value &pJson,
         dirtyFlag_[11] = true;
         if(!pJson[pMasqueradingVector[11]].isNull())
         {
-            first10_=std::make_shared<std::string>(pJson[pMasqueradingVector[11]].asString());
+            second4_=std::make_shared<std::string>(pJson[pMasqueradingVector[11]].asString());
         }
     }
     if(!pMasqueradingVector[12].empty() && pJson.isMember(pMasqueradingVector[12]))
@@ -864,7 +648,7 @@ void Menu::updateByMasqueradedJson(const Json::Value &pJson,
         dirtyFlag_[12] = true;
         if(!pJson[pMasqueradingVector[12]].isNull())
         {
-            second1_=std::make_shared<std::string>(pJson[pMasqueradingVector[12]].asString());
+            second5_=std::make_shared<std::string>(pJson[pMasqueradingVector[12]].asString());
         }
     }
     if(!pMasqueradingVector[13].empty() && pJson.isMember(pMasqueradingVector[13]))
@@ -872,7 +656,7 @@ void Menu::updateByMasqueradedJson(const Json::Value &pJson,
         dirtyFlag_[13] = true;
         if(!pJson[pMasqueradingVector[13]].isNull())
         {
-            second2_=std::make_shared<std::string>(pJson[pMasqueradingVector[13]].asString());
+            second6_=std::make_shared<std::string>(pJson[pMasqueradingVector[13]].asString());
         }
     }
     if(!pMasqueradingVector[14].empty() && pJson.isMember(pMasqueradingVector[14]))
@@ -880,7 +664,7 @@ void Menu::updateByMasqueradedJson(const Json::Value &pJson,
         dirtyFlag_[14] = true;
         if(!pJson[pMasqueradingVector[14]].isNull())
         {
-            second3_=std::make_shared<std::string>(pJson[pMasqueradingVector[14]].asString());
+            comment1_=std::make_shared<std::string>(pJson[pMasqueradingVector[14]].asString());
         }
     }
     if(!pMasqueradingVector[15].empty() && pJson.isMember(pMasqueradingVector[15]))
@@ -888,7 +672,7 @@ void Menu::updateByMasqueradedJson(const Json::Value &pJson,
         dirtyFlag_[15] = true;
         if(!pJson[pMasqueradingVector[15]].isNull())
         {
-            second4_=std::make_shared<std::string>(pJson[pMasqueradingVector[15]].asString());
+            comment2_=std::make_shared<std::string>(pJson[pMasqueradingVector[15]].asString());
         }
     }
     if(!pMasqueradingVector[16].empty() && pJson.isMember(pMasqueradingVector[16]))
@@ -896,7 +680,7 @@ void Menu::updateByMasqueradedJson(const Json::Value &pJson,
         dirtyFlag_[16] = true;
         if(!pJson[pMasqueradingVector[16]].isNull())
         {
-            second5_=std::make_shared<std::string>(pJson[pMasqueradingVector[16]].asString());
+            comment3_=std::make_shared<std::string>(pJson[pMasqueradingVector[16]].asString());
         }
     }
     if(!pMasqueradingVector[17].empty() && pJson.isMember(pMasqueradingVector[17]))
@@ -904,71 +688,7 @@ void Menu::updateByMasqueradedJson(const Json::Value &pJson,
         dirtyFlag_[17] = true;
         if(!pJson[pMasqueradingVector[17]].isNull())
         {
-            second6_=std::make_shared<std::string>(pJson[pMasqueradingVector[17]].asString());
-        }
-    }
-    if(!pMasqueradingVector[18].empty() && pJson.isMember(pMasqueradingVector[18]))
-    {
-        dirtyFlag_[18] = true;
-        if(!pJson[pMasqueradingVector[18]].isNull())
-        {
-            second7_=std::make_shared<std::string>(pJson[pMasqueradingVector[18]].asString());
-        }
-    }
-    if(!pMasqueradingVector[19].empty() && pJson.isMember(pMasqueradingVector[19]))
-    {
-        dirtyFlag_[19] = true;
-        if(!pJson[pMasqueradingVector[19]].isNull())
-        {
-            second8_=std::make_shared<std::string>(pJson[pMasqueradingVector[19]].asString());
-        }
-    }
-    if(!pMasqueradingVector[20].empty() && pJson.isMember(pMasqueradingVector[20]))
-    {
-        dirtyFlag_[20] = true;
-        if(!pJson[pMasqueradingVector[20]].isNull())
-        {
-            second9_=std::make_shared<std::string>(pJson[pMasqueradingVector[20]].asString());
-        }
-    }
-    if(!pMasqueradingVector[21].empty() && pJson.isMember(pMasqueradingVector[21]))
-    {
-        dirtyFlag_[21] = true;
-        if(!pJson[pMasqueradingVector[21]].isNull())
-        {
-            second10_=std::make_shared<std::string>(pJson[pMasqueradingVector[21]].asString());
-        }
-    }
-    if(!pMasqueradingVector[22].empty() && pJson.isMember(pMasqueradingVector[22]))
-    {
-        dirtyFlag_[22] = true;
-        if(!pJson[pMasqueradingVector[22]].isNull())
-        {
-            comment1_=std::make_shared<std::string>(pJson[pMasqueradingVector[22]].asString());
-        }
-    }
-    if(!pMasqueradingVector[23].empty() && pJson.isMember(pMasqueradingVector[23]))
-    {
-        dirtyFlag_[23] = true;
-        if(!pJson[pMasqueradingVector[23]].isNull())
-        {
-            comment2_=std::make_shared<std::string>(pJson[pMasqueradingVector[23]].asString());
-        }
-    }
-    if(!pMasqueradingVector[24].empty() && pJson.isMember(pMasqueradingVector[24]))
-    {
-        dirtyFlag_[24] = true;
-        if(!pJson[pMasqueradingVector[24]].isNull())
-        {
-            comment3_=std::make_shared<std::string>(pJson[pMasqueradingVector[24]].asString());
-        }
-    }
-    if(!pMasqueradingVector[25].empty() && pJson.isMember(pMasqueradingVector[25]))
-    {
-        dirtyFlag_[25] = true;
-        if(!pJson[pMasqueradingVector[25]].isNull())
-        {
-            enabled_=std::make_shared<uint64_t>((uint64_t)pJson[pMasqueradingVector[25]].asUInt64());
+            enabled_=std::make_shared<uint64_t>((uint64_t)pJson[pMasqueradingVector[17]].asUInt64());
         }
     }
 }
@@ -1038,41 +758,9 @@ void Menu::updateByJson(const Json::Value &pJson) noexcept(false)
             first6_=std::make_shared<std::string>(pJson["first6"].asString());
         }
     }
-    if(pJson.isMember("first7"))
-    {
-        dirtyFlag_[8] = true;
-        if(!pJson["first7"].isNull())
-        {
-            first7_=std::make_shared<std::string>(pJson["first7"].asString());
-        }
-    }
-    if(pJson.isMember("first8"))
-    {
-        dirtyFlag_[9] = true;
-        if(!pJson["first8"].isNull())
-        {
-            first8_=std::make_shared<std::string>(pJson["first8"].asString());
-        }
-    }
-    if(pJson.isMember("first9"))
-    {
-        dirtyFlag_[10] = true;
-        if(!pJson["first9"].isNull())
-        {
-            first9_=std::make_shared<std::string>(pJson["first9"].asString());
-        }
-    }
-    if(pJson.isMember("first10"))
-    {
-        dirtyFlag_[11] = true;
-        if(!pJson["first10"].isNull())
-        {
-            first10_=std::make_shared<std::string>(pJson["first10"].asString());
-        }
-    }
     if(pJson.isMember("second1"))
     {
-        dirtyFlag_[12] = true;
+        dirtyFlag_[8] = true;
         if(!pJson["second1"].isNull())
         {
             second1_=std::make_shared<std::string>(pJson["second1"].asString());
@@ -1080,7 +768,7 @@ void Menu::updateByJson(const Json::Value &pJson) noexcept(false)
     }
     if(pJson.isMember("second2"))
     {
-        dirtyFlag_[13] = true;
+        dirtyFlag_[9] = true;
         if(!pJson["second2"].isNull())
         {
             second2_=std::make_shared<std::string>(pJson["second2"].asString());
@@ -1088,7 +776,7 @@ void Menu::updateByJson(const Json::Value &pJson) noexcept(false)
     }
     if(pJson.isMember("second3"))
     {
-        dirtyFlag_[14] = true;
+        dirtyFlag_[10] = true;
         if(!pJson["second3"].isNull())
         {
             second3_=std::make_shared<std::string>(pJson["second3"].asString());
@@ -1096,7 +784,7 @@ void Menu::updateByJson(const Json::Value &pJson) noexcept(false)
     }
     if(pJson.isMember("second4"))
     {
-        dirtyFlag_[15] = true;
+        dirtyFlag_[11] = true;
         if(!pJson["second4"].isNull())
         {
             second4_=std::make_shared<std::string>(pJson["second4"].asString());
@@ -1104,7 +792,7 @@ void Menu::updateByJson(const Json::Value &pJson) noexcept(false)
     }
     if(pJson.isMember("second5"))
     {
-        dirtyFlag_[16] = true;
+        dirtyFlag_[12] = true;
         if(!pJson["second5"].isNull())
         {
             second5_=std::make_shared<std::string>(pJson["second5"].asString());
@@ -1112,47 +800,15 @@ void Menu::updateByJson(const Json::Value &pJson) noexcept(false)
     }
     if(pJson.isMember("second6"))
     {
-        dirtyFlag_[17] = true;
+        dirtyFlag_[13] = true;
         if(!pJson["second6"].isNull())
         {
             second6_=std::make_shared<std::string>(pJson["second6"].asString());
         }
     }
-    if(pJson.isMember("second7"))
-    {
-        dirtyFlag_[18] = true;
-        if(!pJson["second7"].isNull())
-        {
-            second7_=std::make_shared<std::string>(pJson["second7"].asString());
-        }
-    }
-    if(pJson.isMember("second8"))
-    {
-        dirtyFlag_[19] = true;
-        if(!pJson["second8"].isNull())
-        {
-            second8_=std::make_shared<std::string>(pJson["second8"].asString());
-        }
-    }
-    if(pJson.isMember("second9"))
-    {
-        dirtyFlag_[20] = true;
-        if(!pJson["second9"].isNull())
-        {
-            second9_=std::make_shared<std::string>(pJson["second9"].asString());
-        }
-    }
-    if(pJson.isMember("second10"))
-    {
-        dirtyFlag_[21] = true;
-        if(!pJson["second10"].isNull())
-        {
-            second10_=std::make_shared<std::string>(pJson["second10"].asString());
-        }
-    }
     if(pJson.isMember("comment1"))
     {
-        dirtyFlag_[22] = true;
+        dirtyFlag_[14] = true;
         if(!pJson["comment1"].isNull())
         {
             comment1_=std::make_shared<std::string>(pJson["comment1"].asString());
@@ -1160,7 +816,7 @@ void Menu::updateByJson(const Json::Value &pJson) noexcept(false)
     }
     if(pJson.isMember("comment2"))
     {
-        dirtyFlag_[23] = true;
+        dirtyFlag_[15] = true;
         if(!pJson["comment2"].isNull())
         {
             comment2_=std::make_shared<std::string>(pJson["comment2"].asString());
@@ -1168,7 +824,7 @@ void Menu::updateByJson(const Json::Value &pJson) noexcept(false)
     }
     if(pJson.isMember("comment3"))
     {
-        dirtyFlag_[24] = true;
+        dirtyFlag_[16] = true;
         if(!pJson["comment3"].isNull())
         {
             comment3_=std::make_shared<std::string>(pJson["comment3"].asString());
@@ -1176,7 +832,7 @@ void Menu::updateByJson(const Json::Value &pJson) noexcept(false)
     }
     if(pJson.isMember("enabled"))
     {
-        dirtyFlag_[25] = true;
+        dirtyFlag_[17] = true;
         if(!pJson["enabled"].isNull())
         {
             enabled_=std::make_shared<uint64_t>((uint64_t)pJson["enabled"].asUInt64());
@@ -1384,106 +1040,6 @@ void Menu::setFirst6(std::string &&pFirst6) noexcept
 
 
 
-const std::string &Menu::getValueOfFirst7() const noexcept
-{
-    const static std::string defaultValue = std::string();
-    if(first7_)
-        return *first7_;
-    return defaultValue;
-}
-const std::shared_ptr<std::string> &Menu::getFirst7() const noexcept
-{
-    return first7_;
-}
-void Menu::setFirst7(const std::string &pFirst7) noexcept
-{
-    first7_ = std::make_shared<std::string>(pFirst7);
-    dirtyFlag_[8] = true;
-}
-void Menu::setFirst7(std::string &&pFirst7) noexcept
-{
-    first7_ = std::make_shared<std::string>(std::move(pFirst7));
-    dirtyFlag_[8] = true;
-}
-
-
-
-
-const std::string &Menu::getValueOfFirst8() const noexcept
-{
-    const static std::string defaultValue = std::string();
-    if(first8_)
-        return *first8_;
-    return defaultValue;
-}
-const std::shared_ptr<std::string> &Menu::getFirst8() const noexcept
-{
-    return first8_;
-}
-void Menu::setFirst8(const std::string &pFirst8) noexcept
-{
-    first8_ = std::make_shared<std::string>(pFirst8);
-    dirtyFlag_[9] = true;
-}
-void Menu::setFirst8(std::string &&pFirst8) noexcept
-{
-    first8_ = std::make_shared<std::string>(std::move(pFirst8));
-    dirtyFlag_[9] = true;
-}
-
-
-
-
-const std::string &Menu::getValueOfFirst9() const noexcept
-{
-    const static std::string defaultValue = std::string();
-    if(first9_)
-        return *first9_;
-    return defaultValue;
-}
-const std::shared_ptr<std::string> &Menu::getFirst9() const noexcept
-{
-    return first9_;
-}
-void Menu::setFirst9(const std::string &pFirst9) noexcept
-{
-    first9_ = std::make_shared<std::string>(pFirst9);
-    dirtyFlag_[10] = true;
-}
-void Menu::setFirst9(std::string &&pFirst9) noexcept
-{
-    first9_ = std::make_shared<std::string>(std::move(pFirst9));
-    dirtyFlag_[10] = true;
-}
-
-
-
-
-const std::string &Menu::getValueOfFirst10() const noexcept
-{
-    const static std::string defaultValue = std::string();
-    if(first10_)
-        return *first10_;
-    return defaultValue;
-}
-const std::shared_ptr<std::string> &Menu::getFirst10() const noexcept
-{
-    return first10_;
-}
-void Menu::setFirst10(const std::string &pFirst10) noexcept
-{
-    first10_ = std::make_shared<std::string>(pFirst10);
-    dirtyFlag_[11] = true;
-}
-void Menu::setFirst10(std::string &&pFirst10) noexcept
-{
-    first10_ = std::make_shared<std::string>(std::move(pFirst10));
-    dirtyFlag_[11] = true;
-}
-
-
-
-
 const std::string &Menu::getValueOfSecond1() const noexcept
 {
     const static std::string defaultValue = std::string();
@@ -1498,12 +1054,12 @@ const std::shared_ptr<std::string> &Menu::getSecond1() const noexcept
 void Menu::setSecond1(const std::string &pSecond1) noexcept
 {
     second1_ = std::make_shared<std::string>(pSecond1);
-    dirtyFlag_[12] = true;
+    dirtyFlag_[8] = true;
 }
 void Menu::setSecond1(std::string &&pSecond1) noexcept
 {
     second1_ = std::make_shared<std::string>(std::move(pSecond1));
-    dirtyFlag_[12] = true;
+    dirtyFlag_[8] = true;
 }
 
 
@@ -1523,12 +1079,12 @@ const std::shared_ptr<std::string> &Menu::getSecond2() const noexcept
 void Menu::setSecond2(const std::string &pSecond2) noexcept
 {
     second2_ = std::make_shared<std::string>(pSecond2);
-    dirtyFlag_[13] = true;
+    dirtyFlag_[9] = true;
 }
 void Menu::setSecond2(std::string &&pSecond2) noexcept
 {
     second2_ = std::make_shared<std::string>(std::move(pSecond2));
-    dirtyFlag_[13] = true;
+    dirtyFlag_[9] = true;
 }
 
 
@@ -1548,12 +1104,12 @@ const std::shared_ptr<std::string> &Menu::getSecond3() const noexcept
 void Menu::setSecond3(const std::string &pSecond3) noexcept
 {
     second3_ = std::make_shared<std::string>(pSecond3);
-    dirtyFlag_[14] = true;
+    dirtyFlag_[10] = true;
 }
 void Menu::setSecond3(std::string &&pSecond3) noexcept
 {
     second3_ = std::make_shared<std::string>(std::move(pSecond3));
-    dirtyFlag_[14] = true;
+    dirtyFlag_[10] = true;
 }
 
 
@@ -1573,12 +1129,12 @@ const std::shared_ptr<std::string> &Menu::getSecond4() const noexcept
 void Menu::setSecond4(const std::string &pSecond4) noexcept
 {
     second4_ = std::make_shared<std::string>(pSecond4);
-    dirtyFlag_[15] = true;
+    dirtyFlag_[11] = true;
 }
 void Menu::setSecond4(std::string &&pSecond4) noexcept
 {
     second4_ = std::make_shared<std::string>(std::move(pSecond4));
-    dirtyFlag_[15] = true;
+    dirtyFlag_[11] = true;
 }
 
 
@@ -1598,12 +1154,12 @@ const std::shared_ptr<std::string> &Menu::getSecond5() const noexcept
 void Menu::setSecond5(const std::string &pSecond5) noexcept
 {
     second5_ = std::make_shared<std::string>(pSecond5);
-    dirtyFlag_[16] = true;
+    dirtyFlag_[12] = true;
 }
 void Menu::setSecond5(std::string &&pSecond5) noexcept
 {
     second5_ = std::make_shared<std::string>(std::move(pSecond5));
-    dirtyFlag_[16] = true;
+    dirtyFlag_[12] = true;
 }
 
 
@@ -1623,112 +1179,12 @@ const std::shared_ptr<std::string> &Menu::getSecond6() const noexcept
 void Menu::setSecond6(const std::string &pSecond6) noexcept
 {
     second6_ = std::make_shared<std::string>(pSecond6);
-    dirtyFlag_[17] = true;
+    dirtyFlag_[13] = true;
 }
 void Menu::setSecond6(std::string &&pSecond6) noexcept
 {
     second6_ = std::make_shared<std::string>(std::move(pSecond6));
-    dirtyFlag_[17] = true;
-}
-
-
-
-
-const std::string &Menu::getValueOfSecond7() const noexcept
-{
-    const static std::string defaultValue = std::string();
-    if(second7_)
-        return *second7_;
-    return defaultValue;
-}
-const std::shared_ptr<std::string> &Menu::getSecond7() const noexcept
-{
-    return second7_;
-}
-void Menu::setSecond7(const std::string &pSecond7) noexcept
-{
-    second7_ = std::make_shared<std::string>(pSecond7);
-    dirtyFlag_[18] = true;
-}
-void Menu::setSecond7(std::string &&pSecond7) noexcept
-{
-    second7_ = std::make_shared<std::string>(std::move(pSecond7));
-    dirtyFlag_[18] = true;
-}
-
-
-
-
-const std::string &Menu::getValueOfSecond8() const noexcept
-{
-    const static std::string defaultValue = std::string();
-    if(second8_)
-        return *second8_;
-    return defaultValue;
-}
-const std::shared_ptr<std::string> &Menu::getSecond8() const noexcept
-{
-    return second8_;
-}
-void Menu::setSecond8(const std::string &pSecond8) noexcept
-{
-    second8_ = std::make_shared<std::string>(pSecond8);
-    dirtyFlag_[19] = true;
-}
-void Menu::setSecond8(std::string &&pSecond8) noexcept
-{
-    second8_ = std::make_shared<std::string>(std::move(pSecond8));
-    dirtyFlag_[19] = true;
-}
-
-
-
-
-const std::string &Menu::getValueOfSecond9() const noexcept
-{
-    const static std::string defaultValue = std::string();
-    if(second9_)
-        return *second9_;
-    return defaultValue;
-}
-const std::shared_ptr<std::string> &Menu::getSecond9() const noexcept
-{
-    return second9_;
-}
-void Menu::setSecond9(const std::string &pSecond9) noexcept
-{
-    second9_ = std::make_shared<std::string>(pSecond9);
-    dirtyFlag_[20] = true;
-}
-void Menu::setSecond9(std::string &&pSecond9) noexcept
-{
-    second9_ = std::make_shared<std::string>(std::move(pSecond9));
-    dirtyFlag_[20] = true;
-}
-
-
-
-
-const std::string &Menu::getValueOfSecond10() const noexcept
-{
-    const static std::string defaultValue = std::string();
-    if(second10_)
-        return *second10_;
-    return defaultValue;
-}
-const std::shared_ptr<std::string> &Menu::getSecond10() const noexcept
-{
-    return second10_;
-}
-void Menu::setSecond10(const std::string &pSecond10) noexcept
-{
-    second10_ = std::make_shared<std::string>(pSecond10);
-    dirtyFlag_[21] = true;
-}
-void Menu::setSecond10(std::string &&pSecond10) noexcept
-{
-    second10_ = std::make_shared<std::string>(std::move(pSecond10));
-    dirtyFlag_[21] = true;
+    dirtyFlag_[13] = true;
 }
 
 
@@ -1748,12 +1204,12 @@ const std::shared_ptr<std::string> &Menu::getComment1() const noexcept
 void Menu::setComment1(const std::string &pComment1) noexcept
 {
     comment1_ = std::make_shared<std::string>(pComment1);
-    dirtyFlag_[22] = true;
+    dirtyFlag_[14] = true;
 }
 void Menu::setComment1(std::string &&pComment1) noexcept
 {
     comment1_ = std::make_shared<std::string>(std::move(pComment1));
-    dirtyFlag_[22] = true;
+    dirtyFlag_[14] = true;
 }
 
 
@@ -1773,12 +1229,12 @@ const std::shared_ptr<std::string> &Menu::getComment2() const noexcept
 void Menu::setComment2(const std::string &pComment2) noexcept
 {
     comment2_ = std::make_shared<std::string>(pComment2);
-    dirtyFlag_[23] = true;
+    dirtyFlag_[15] = true;
 }
 void Menu::setComment2(std::string &&pComment2) noexcept
 {
     comment2_ = std::make_shared<std::string>(std::move(pComment2));
-    dirtyFlag_[23] = true;
+    dirtyFlag_[15] = true;
 }
 
 
@@ -1798,12 +1254,12 @@ const std::shared_ptr<std::string> &Menu::getComment3() const noexcept
 void Menu::setComment3(const std::string &pComment3) noexcept
 {
     comment3_ = std::make_shared<std::string>(pComment3);
-    dirtyFlag_[24] = true;
+    dirtyFlag_[16] = true;
 }
 void Menu::setComment3(std::string &&pComment3) noexcept
 {
     comment3_ = std::make_shared<std::string>(std::move(pComment3));
-    dirtyFlag_[24] = true;
+    dirtyFlag_[16] = true;
 }
 
 
@@ -1823,7 +1279,7 @@ const std::shared_ptr<uint64_t> &Menu::getEnabled() const noexcept
 void Menu::setEnabled(const uint64_t &pEnabled) noexcept
 {
     enabled_ = std::make_shared<uint64_t>(pEnabled);
-    dirtyFlag_[25] = true;
+    dirtyFlag_[17] = true;
 }
 
 
@@ -1844,20 +1300,12 @@ const std::vector<std::string> &Menu::insertColumns() noexcept
         "first4",
         "first5",
         "first6",
-        "first7",
-        "first8",
-        "first9",
-        "first10",
         "second1",
         "second2",
         "second3",
         "second4",
         "second5",
         "second6",
-        "second7",
-        "second8",
-        "second9",
-        "second10",
         "comment1",
         "comment2",
         "comment3",
@@ -1947,50 +1395,6 @@ void Menu::outputArgs(drogon::orm::internal::SqlBinder &binder) const
     }
     if(dirtyFlag_[8])
     {
-        if(getFirst7())
-        {
-            binder << getValueOfFirst7();
-        }
-        else
-        {
-            binder << nullptr;
-        }
-    }
-    if(dirtyFlag_[9])
-    {
-        if(getFirst8())
-        {
-            binder << getValueOfFirst8();
-        }
-        else
-        {
-            binder << nullptr;
-        }
-    }
-    if(dirtyFlag_[10])
-    {
-        if(getFirst9())
-        {
-            binder << getValueOfFirst9();
-        }
-        else
-        {
-            binder << nullptr;
-        }
-    }
-    if(dirtyFlag_[11])
-    {
-        if(getFirst10())
-        {
-            binder << getValueOfFirst10();
-        }
-        else
-        {
-            binder << nullptr;
-        }
-    }
-    if(dirtyFlag_[12])
-    {
         if(getSecond1())
         {
             binder << getValueOfSecond1();
@@ -2000,7 +1404,7 @@ void Menu::outputArgs(drogon::orm::internal::SqlBinder &binder) const
             binder << nullptr;
         }
     }
-    if(dirtyFlag_[13])
+    if(dirtyFlag_[9])
     {
         if(getSecond2())
         {
@@ -2011,7 +1415,7 @@ void Menu::outputArgs(drogon::orm::internal::SqlBinder &binder) const
             binder << nullptr;
         }
     }
-    if(dirtyFlag_[14])
+    if(dirtyFlag_[10])
     {
         if(getSecond3())
         {
@@ -2022,7 +1426,7 @@ void Menu::outputArgs(drogon::orm::internal::SqlBinder &binder) const
             binder << nullptr;
         }
     }
-    if(dirtyFlag_[15])
+    if(dirtyFlag_[11])
     {
         if(getSecond4())
         {
@@ -2033,7 +1437,7 @@ void Menu::outputArgs(drogon::orm::internal::SqlBinder &binder) const
             binder << nullptr;
         }
     }
-    if(dirtyFlag_[16])
+    if(dirtyFlag_[12])
     {
         if(getSecond5())
         {
@@ -2044,7 +1448,7 @@ void Menu::outputArgs(drogon::orm::internal::SqlBinder &binder) const
             binder << nullptr;
         }
     }
-    if(dirtyFlag_[17])
+    if(dirtyFlag_[13])
     {
         if(getSecond6())
         {
@@ -2055,51 +1459,7 @@ void Menu::outputArgs(drogon::orm::internal::SqlBinder &binder) const
             binder << nullptr;
         }
     }
-    if(dirtyFlag_[18])
-    {
-        if(getSecond7())
-        {
-            binder << getValueOfSecond7();
-        }
-        else
-        {
-            binder << nullptr;
-        }
-    }
-    if(dirtyFlag_[19])
-    {
-        if(getSecond8())
-        {
-            binder << getValueOfSecond8();
-        }
-        else
-        {
-            binder << nullptr;
-        }
-    }
-    if(dirtyFlag_[20])
-    {
-        if(getSecond9())
-        {
-            binder << getValueOfSecond9();
-        }
-        else
-        {
-            binder << nullptr;
-        }
-    }
-    if(dirtyFlag_[21])
-    {
-        if(getSecond10())
-        {
-            binder << getValueOfSecond10();
-        }
-        else
-        {
-            binder << nullptr;
-        }
-    }
-    if(dirtyFlag_[22])
+    if(dirtyFlag_[14])
     {
         if(getComment1())
         {
@@ -2110,7 +1470,7 @@ void Menu::outputArgs(drogon::orm::internal::SqlBinder &binder) const
             binder << nullptr;
         }
     }
-    if(dirtyFlag_[23])
+    if(dirtyFlag_[15])
     {
         if(getComment2())
         {
@@ -2121,7 +1481,7 @@ void Menu::outputArgs(drogon::orm::internal::SqlBinder &binder) const
             binder << nullptr;
         }
     }
-    if(dirtyFlag_[24])
+    if(dirtyFlag_[16])
     {
         if(getComment3())
         {
@@ -2132,7 +1492,7 @@ void Menu::outputArgs(drogon::orm::internal::SqlBinder &binder) const
             binder << nullptr;
         }
     }
-    if(dirtyFlag_[25])
+    if(dirtyFlag_[17])
     {
         if(getEnabled())
         {
@@ -2215,38 +1575,6 @@ const std::vector<std::string> Menu::updateColumns() const
     if(dirtyFlag_[17])
     {
         ret.push_back(getColumnName(17));
-    }
-    if(dirtyFlag_[18])
-    {
-        ret.push_back(getColumnName(18));
-    }
-    if(dirtyFlag_[19])
-    {
-        ret.push_back(getColumnName(19));
-    }
-    if(dirtyFlag_[20])
-    {
-        ret.push_back(getColumnName(20));
-    }
-    if(dirtyFlag_[21])
-    {
-        ret.push_back(getColumnName(21));
-    }
-    if(dirtyFlag_[22])
-    {
-        ret.push_back(getColumnName(22));
-    }
-    if(dirtyFlag_[23])
-    {
-        ret.push_back(getColumnName(23));
-    }
-    if(dirtyFlag_[24])
-    {
-        ret.push_back(getColumnName(24));
-    }
-    if(dirtyFlag_[25])
-    {
-        ret.push_back(getColumnName(25));
     }
     return ret;
 }
@@ -2332,50 +1660,6 @@ void Menu::updateArgs(drogon::orm::internal::SqlBinder &binder) const
     }
     if(dirtyFlag_[8])
     {
-        if(getFirst7())
-        {
-            binder << getValueOfFirst7();
-        }
-        else
-        {
-            binder << nullptr;
-        }
-    }
-    if(dirtyFlag_[9])
-    {
-        if(getFirst8())
-        {
-            binder << getValueOfFirst8();
-        }
-        else
-        {
-            binder << nullptr;
-        }
-    }
-    if(dirtyFlag_[10])
-    {
-        if(getFirst9())
-        {
-            binder << getValueOfFirst9();
-        }
-        else
-        {
-            binder << nullptr;
-        }
-    }
-    if(dirtyFlag_[11])
-    {
-        if(getFirst10())
-        {
-            binder << getValueOfFirst10();
-        }
-        else
-        {
-            binder << nullptr;
-        }
-    }
-    if(dirtyFlag_[12])
-    {
         if(getSecond1())
         {
             binder << getValueOfSecond1();
@@ -2385,7 +1669,7 @@ void Menu::updateArgs(drogon::orm::internal::SqlBinder &binder) const
             binder << nullptr;
         }
     }
-    if(dirtyFlag_[13])
+    if(dirtyFlag_[9])
     {
         if(getSecond2())
         {
@@ -2396,7 +1680,7 @@ void Menu::updateArgs(drogon::orm::internal::SqlBinder &binder) const
             binder << nullptr;
         }
     }
-    if(dirtyFlag_[14])
+    if(dirtyFlag_[10])
     {
         if(getSecond3())
         {
@@ -2407,7 +1691,7 @@ void Menu::updateArgs(drogon::orm::internal::SqlBinder &binder) const
             binder << nullptr;
         }
     }
-    if(dirtyFlag_[15])
+    if(dirtyFlag_[11])
     {
         if(getSecond4())
         {
@@ -2418,7 +1702,7 @@ void Menu::updateArgs(drogon::orm::internal::SqlBinder &binder) const
             binder << nullptr;
         }
     }
-    if(dirtyFlag_[16])
+    if(dirtyFlag_[12])
     {
         if(getSecond5())
         {
@@ -2429,7 +1713,7 @@ void Menu::updateArgs(drogon::orm::internal::SqlBinder &binder) const
             binder << nullptr;
         }
     }
-    if(dirtyFlag_[17])
+    if(dirtyFlag_[13])
     {
         if(getSecond6())
         {
@@ -2440,51 +1724,7 @@ void Menu::updateArgs(drogon::orm::internal::SqlBinder &binder) const
             binder << nullptr;
         }
     }
-    if(dirtyFlag_[18])
-    {
-        if(getSecond7())
-        {
-            binder << getValueOfSecond7();
-        }
-        else
-        {
-            binder << nullptr;
-        }
-    }
-    if(dirtyFlag_[19])
-    {
-        if(getSecond8())
-        {
-            binder << getValueOfSecond8();
-        }
-        else
-        {
-            binder << nullptr;
-        }
-    }
-    if(dirtyFlag_[20])
-    {
-        if(getSecond9())
-        {
-            binder << getValueOfSecond9();
-        }
-        else
-        {
-            binder << nullptr;
-        }
-    }
-    if(dirtyFlag_[21])
-    {
-        if(getSecond10())
-        {
-            binder << getValueOfSecond10();
-        }
-        else
-        {
-            binder << nullptr;
-        }
-    }
-    if(dirtyFlag_[22])
+    if(dirtyFlag_[14])
     {
         if(getComment1())
         {
@@ -2495,7 +1735,7 @@ void Menu::updateArgs(drogon::orm::internal::SqlBinder &binder) const
             binder << nullptr;
         }
     }
-    if(dirtyFlag_[23])
+    if(dirtyFlag_[15])
     {
         if(getComment2())
         {
@@ -2506,7 +1746,7 @@ void Menu::updateArgs(drogon::orm::internal::SqlBinder &binder) const
             binder << nullptr;
         }
     }
-    if(dirtyFlag_[24])
+    if(dirtyFlag_[16])
     {
         if(getComment3())
         {
@@ -2517,7 +1757,7 @@ void Menu::updateArgs(drogon::orm::internal::SqlBinder &binder) const
             binder << nullptr;
         }
     }
-    if(dirtyFlag_[25])
+    if(dirtyFlag_[17])
     {
         if(getEnabled())
         {
@@ -2596,38 +1836,6 @@ Json::Value Menu::toJson() const
     {
         ret["first6"]=Json::Value();
     }
-    if(getFirst7())
-    {
-        ret["first7"]=getValueOfFirst7();
-    }
-    else
-    {
-        ret["first7"]=Json::Value();
-    }
-    if(getFirst8())
-    {
-        ret["first8"]=getValueOfFirst8();
-    }
-    else
-    {
-        ret["first8"]=Json::Value();
-    }
-    if(getFirst9())
-    {
-        ret["first9"]=getValueOfFirst9();
-    }
-    else
-    {
-        ret["first9"]=Json::Value();
-    }
-    if(getFirst10())
-    {
-        ret["first10"]=getValueOfFirst10();
-    }
-    else
-    {
-        ret["first10"]=Json::Value();
-    }
     if(getSecond1())
     {
         ret["second1"]=getValueOfSecond1();
@@ -2676,38 +1884,6 @@ Json::Value Menu::toJson() const
     {
         ret["second6"]=Json::Value();
     }
-    if(getSecond7())
-    {
-        ret["second7"]=getValueOfSecond7();
-    }
-    else
-    {
-        ret["second7"]=Json::Value();
-    }
-    if(getSecond8())
-    {
-        ret["second8"]=getValueOfSecond8();
-    }
-    else
-    {
-        ret["second8"]=Json::Value();
-    }
-    if(getSecond9())
-    {
-        ret["second9"]=getValueOfSecond9();
-    }
-    else
-    {
-        ret["second9"]=Json::Value();
-    }
-    if(getSecond10())
-    {
-        ret["second10"]=getValueOfSecond10();
-    }
-    else
-    {
-        ret["second10"]=Json::Value();
-    }
     if(getComment1())
     {
         ret["comment1"]=getValueOfComment1();
@@ -2747,7 +1923,7 @@ Json::Value Menu::toMasqueradedJson(
     const std::vector<std::string> &pMasqueradingVector) const
 {
     Json::Value ret;
-    if(pMasqueradingVector.size() == 26)
+    if(pMasqueradingVector.size() == 18)
     {
         if(!pMasqueradingVector[0].empty())
         {
@@ -2839,9 +2015,9 @@ Json::Value Menu::toMasqueradedJson(
         }
         if(!pMasqueradingVector[8].empty())
         {
-            if(getFirst7())
+            if(getSecond1())
             {
-                ret[pMasqueradingVector[8]]=getValueOfFirst7();
+                ret[pMasqueradingVector[8]]=getValueOfSecond1();
             }
             else
             {
@@ -2850,9 +2026,9 @@ Json::Value Menu::toMasqueradedJson(
         }
         if(!pMasqueradingVector[9].empty())
         {
-            if(getFirst8())
+            if(getSecond2())
             {
-                ret[pMasqueradingVector[9]]=getValueOfFirst8();
+                ret[pMasqueradingVector[9]]=getValueOfSecond2();
             }
             else
             {
@@ -2861,9 +2037,9 @@ Json::Value Menu::toMasqueradedJson(
         }
         if(!pMasqueradingVector[10].empty())
         {
-            if(getFirst9())
+            if(getSecond3())
             {
-                ret[pMasqueradingVector[10]]=getValueOfFirst9();
+                ret[pMasqueradingVector[10]]=getValueOfSecond3();
             }
             else
             {
@@ -2872,9 +2048,9 @@ Json::Value Menu::toMasqueradedJson(
         }
         if(!pMasqueradingVector[11].empty())
         {
-            if(getFirst10())
+            if(getSecond4())
             {
-                ret[pMasqueradingVector[11]]=getValueOfFirst10();
+                ret[pMasqueradingVector[11]]=getValueOfSecond4();
             }
             else
             {
@@ -2883,9 +2059,9 @@ Json::Value Menu::toMasqueradedJson(
         }
         if(!pMasqueradingVector[12].empty())
         {
-            if(getSecond1())
+            if(getSecond5())
             {
-                ret[pMasqueradingVector[12]]=getValueOfSecond1();
+                ret[pMasqueradingVector[12]]=getValueOfSecond5();
             }
             else
             {
@@ -2894,9 +2070,9 @@ Json::Value Menu::toMasqueradedJson(
         }
         if(!pMasqueradingVector[13].empty())
         {
-            if(getSecond2())
+            if(getSecond6())
             {
-                ret[pMasqueradingVector[13]]=getValueOfSecond2();
+                ret[pMasqueradingVector[13]]=getValueOfSecond6();
             }
             else
             {
@@ -2905,9 +2081,9 @@ Json::Value Menu::toMasqueradedJson(
         }
         if(!pMasqueradingVector[14].empty())
         {
-            if(getSecond3())
+            if(getComment1())
             {
-                ret[pMasqueradingVector[14]]=getValueOfSecond3();
+                ret[pMasqueradingVector[14]]=getValueOfComment1();
             }
             else
             {
@@ -2916,9 +2092,9 @@ Json::Value Menu::toMasqueradedJson(
         }
         if(!pMasqueradingVector[15].empty())
         {
-            if(getSecond4())
+            if(getComment2())
             {
-                ret[pMasqueradingVector[15]]=getValueOfSecond4();
+                ret[pMasqueradingVector[15]]=getValueOfComment2();
             }
             else
             {
@@ -2927,9 +2103,9 @@ Json::Value Menu::toMasqueradedJson(
         }
         if(!pMasqueradingVector[16].empty())
         {
-            if(getSecond5())
+            if(getComment3())
             {
-                ret[pMasqueradingVector[16]]=getValueOfSecond5();
+                ret[pMasqueradingVector[16]]=getValueOfComment3();
             }
             else
             {
@@ -2938,101 +2114,13 @@ Json::Value Menu::toMasqueradedJson(
         }
         if(!pMasqueradingVector[17].empty())
         {
-            if(getSecond6())
+            if(getEnabled())
             {
-                ret[pMasqueradingVector[17]]=getValueOfSecond6();
+                ret[pMasqueradingVector[17]]=(Json::UInt64)getValueOfEnabled();
             }
             else
             {
                 ret[pMasqueradingVector[17]]=Json::Value();
-            }
-        }
-        if(!pMasqueradingVector[18].empty())
-        {
-            if(getSecond7())
-            {
-                ret[pMasqueradingVector[18]]=getValueOfSecond7();
-            }
-            else
-            {
-                ret[pMasqueradingVector[18]]=Json::Value();
-            }
-        }
-        if(!pMasqueradingVector[19].empty())
-        {
-            if(getSecond8())
-            {
-                ret[pMasqueradingVector[19]]=getValueOfSecond8();
-            }
-            else
-            {
-                ret[pMasqueradingVector[19]]=Json::Value();
-            }
-        }
-        if(!pMasqueradingVector[20].empty())
-        {
-            if(getSecond9())
-            {
-                ret[pMasqueradingVector[20]]=getValueOfSecond9();
-            }
-            else
-            {
-                ret[pMasqueradingVector[20]]=Json::Value();
-            }
-        }
-        if(!pMasqueradingVector[21].empty())
-        {
-            if(getSecond10())
-            {
-                ret[pMasqueradingVector[21]]=getValueOfSecond10();
-            }
-            else
-            {
-                ret[pMasqueradingVector[21]]=Json::Value();
-            }
-        }
-        if(!pMasqueradingVector[22].empty())
-        {
-            if(getComment1())
-            {
-                ret[pMasqueradingVector[22]]=getValueOfComment1();
-            }
-            else
-            {
-                ret[pMasqueradingVector[22]]=Json::Value();
-            }
-        }
-        if(!pMasqueradingVector[23].empty())
-        {
-            if(getComment2())
-            {
-                ret[pMasqueradingVector[23]]=getValueOfComment2();
-            }
-            else
-            {
-                ret[pMasqueradingVector[23]]=Json::Value();
-            }
-        }
-        if(!pMasqueradingVector[24].empty())
-        {
-            if(getComment3())
-            {
-                ret[pMasqueradingVector[24]]=getValueOfComment3();
-            }
-            else
-            {
-                ret[pMasqueradingVector[24]]=Json::Value();
-            }
-        }
-        if(!pMasqueradingVector[25].empty())
-        {
-            if(getEnabled())
-            {
-                ret[pMasqueradingVector[25]]=(Json::UInt64)getValueOfEnabled();
-            }
-            else
-            {
-                ret[pMasqueradingVector[25]]=Json::Value();
             }
         }
         return ret;
@@ -3102,38 +2190,6 @@ Json::Value Menu::toMasqueradedJson(
     {
         ret["first6"]=Json::Value();
     }
-    if(getFirst7())
-    {
-        ret["first7"]=getValueOfFirst7();
-    }
-    else
-    {
-        ret["first7"]=Json::Value();
-    }
-    if(getFirst8())
-    {
-        ret["first8"]=getValueOfFirst8();
-    }
-    else
-    {
-        ret["first8"]=Json::Value();
-    }
-    if(getFirst9())
-    {
-        ret["first9"]=getValueOfFirst9();
-    }
-    else
-    {
-        ret["first9"]=Json::Value();
-    }
-    if(getFirst10())
-    {
-        ret["first10"]=getValueOfFirst10();
-    }
-    else
-    {
-        ret["first10"]=Json::Value();
-    }
     if(getSecond1())
     {
         ret["second1"]=getValueOfSecond1();
@@ -3181,38 +2237,6 @@ Json::Value Menu::toMasqueradedJson(
     else
     {
         ret["second6"]=Json::Value();
-    }
-    if(getSecond7())
-    {
-        ret["second7"]=getValueOfSecond7();
-    }
-    else
-    {
-        ret["second7"]=Json::Value();
-    }
-    if(getSecond8())
-    {
-        ret["second8"]=getValueOfSecond8();
-    }
-    else
-    {
-        ret["second8"]=Json::Value();
-    }
-    if(getSecond9())
-    {
-        ret["second9"]=getValueOfSecond9();
-    }
-    else
-    {
-        ret["second9"]=Json::Value();
-    }
-    if(getSecond10())
-    {
-        ret["second10"]=getValueOfSecond10();
-    }
-    else
-    {
-        ret["second10"]=Json::Value();
     }
     if(getComment1())
     {
@@ -3326,49 +2350,9 @@ bool Menu::validateJsonForCreation(const Json::Value &pJson, std::string &err)
         err="The first6 column cannot be null";
         return false;
     }
-    if(pJson.isMember("first7"))
-    {
-        if(!validJsonOfField(8, "first7", pJson["first7"], err, true))
-            return false;
-    }
-    else
-    {
-        err="The first7 column cannot be null";
-        return false;
-    }
-    if(pJson.isMember("first8"))
-    {
-        if(!validJsonOfField(9, "first8", pJson["first8"], err, true))
-            return false;
-    }
-    else
-    {
-        err="The first8 column cannot be null";
-        return false;
-    }
-    if(pJson.isMember("first9"))
-    {
-        if(!validJsonOfField(10, "first9", pJson["first9"], err, true))
-            return false;
-    }
-    else
-    {
-        err="The first9 column cannot be null";
-        return false;
-    }
-    if(pJson.isMember("first10"))
-    {
-        if(!validJsonOfField(11, "first10", pJson["first10"], err, true))
-            return false;
-    }
-    else
-    {
-        err="The first10 column cannot be null";
-        return false;
-    }
     if(pJson.isMember("second1"))
     {
-        if(!validJsonOfField(12, "second1", pJson["second1"], err, true))
+        if(!validJsonOfField(8, "second1", pJson["second1"], err, true))
             return false;
     }
     else
@@ -3378,7 +2362,7 @@ bool Menu::validateJsonForCreation(const Json::Value &pJson, std::string &err)
     }
     if(pJson.isMember("second2"))
     {
-        if(!validJsonOfField(13, "second2", pJson["second2"], err, true))
+        if(!validJsonOfField(9, "second2", pJson["second2"], err, true))
             return false;
     }
     else
@@ -3388,7 +2372,7 @@ bool Menu::validateJsonForCreation(const Json::Value &pJson, std::string &err)
     }
     if(pJson.isMember("second3"))
     {
-        if(!validJsonOfField(14, "second3", pJson["second3"], err, true))
+        if(!validJsonOfField(10, "second3", pJson["second3"], err, true))
             return false;
     }
     else
@@ -3398,7 +2382,7 @@ bool Menu::validateJsonForCreation(const Json::Value &pJson, std::string &err)
     }
     if(pJson.isMember("second4"))
     {
-        if(!validJsonOfField(15, "second4", pJson["second4"], err, true))
+        if(!validJsonOfField(11, "second4", pJson["second4"], err, true))
             return false;
     }
     else
@@ -3408,7 +2392,7 @@ bool Menu::validateJsonForCreation(const Json::Value &pJson, std::string &err)
     }
     if(pJson.isMember("second5"))
     {
-        if(!validJsonOfField(16, "second5", pJson["second5"], err, true))
+        if(!validJsonOfField(12, "second5", pJson["second5"], err, true))
             return false;
     }
     else
@@ -3418,7 +2402,7 @@ bool Menu::validateJsonForCreation(const Json::Value &pJson, std::string &err)
     }
     if(pJson.isMember("second6"))
     {
-        if(!validJsonOfField(17, "second6", pJson["second6"], err, true))
+        if(!validJsonOfField(13, "second6", pJson["second6"], err, true))
             return false;
     }
     else
@@ -3426,49 +2410,9 @@ bool Menu::validateJsonForCreation(const Json::Value &pJson, std::string &err)
         err="The second6 column cannot be null";
         return false;
     }
-    if(pJson.isMember("second7"))
-    {
-        if(!validJsonOfField(18, "second7", pJson["second7"], err, true))
-            return false;
-    }
-    else
-    {
-        err="The second7 column cannot be null";
-        return false;
-    }
-    if(pJson.isMember("second8"))
-    {
-        if(!validJsonOfField(19, "second8", pJson["second8"], err, true))
-            return false;
-    }
-    else
-    {
-        err="The second8 column cannot be null";
-        return false;
-    }
-    if(pJson.isMember("second9"))
-    {
-        if(!validJsonOfField(20, "second9", pJson["second9"], err, true))
-            return false;
-    }
-    else
-    {
-        err="The second9 column cannot be null";
-        return false;
-    }
-    if(pJson.isMember("second10"))
-    {
-        if(!validJsonOfField(21, "second10", pJson["second10"], err, true))
-            return false;
-    }
-    else
-    {
-        err="The second10 column cannot be null";
-        return false;
-    }
     if(pJson.isMember("comment1"))
     {
-        if(!validJsonOfField(22, "comment1", pJson["comment1"], err, true))
+        if(!validJsonOfField(14, "comment1", pJson["comment1"], err, true))
             return false;
     }
     else
@@ -3478,7 +2422,7 @@ bool Menu::validateJsonForCreation(const Json::Value &pJson, std::string &err)
     }
     if(pJson.isMember("comment2"))
     {
-        if(!validJsonOfField(23, "comment2", pJson["comment2"], err, true))
+        if(!validJsonOfField(15, "comment2", pJson["comment2"], err, true))
             return false;
     }
     else
@@ -3488,7 +2432,7 @@ bool Menu::validateJsonForCreation(const Json::Value &pJson, std::string &err)
     }
     if(pJson.isMember("comment3"))
     {
-        if(!validJsonOfField(24, "comment3", pJson["comment3"], err, true))
+        if(!validJsonOfField(16, "comment3", pJson["comment3"], err, true))
             return false;
     }
     else
@@ -3498,7 +2442,7 @@ bool Menu::validateJsonForCreation(const Json::Value &pJson, std::string &err)
     }
     if(pJson.isMember("enabled"))
     {
-        if(!validJsonOfField(25, "enabled", pJson["enabled"], err, true))
+        if(!validJsonOfField(17, "enabled", pJson["enabled"], err, true))
             return false;
     }
     else
@@ -3512,7 +2456,7 @@ bool Menu::validateMasqueradedJsonForCreation(const Json::Value &pJson,
                                               const std::vector<std::string> &pMasqueradingVector,
                                               std::string &err)
 {
-    if(pMasqueradingVector.size() != 26)
+    if(pMasqueradingVector.size() != 18)
     {
         err = "Bad masquerading vector";
         return false;
@@ -3746,110 +2690,6 @@ bool Menu::validateMasqueradedJsonForCreation(const Json::Value &pJson,
             return false;
         }
     }
-    if(!pMasqueradingVector[18].empty())
-    {
-        if(pJson.isMember(pMasqueradingVector[18]))
-        {
-            if(!validJsonOfField(18, pMasqueradingVector[18], pJson[pMasqueradingVector[18]], err, true))
-                return false;
-        }
-        else
-        {
-            err="The " + pMasqueradingVector[18] + " column cannot be null";
-            return false;
-        }
-    }
-    if(!pMasqueradingVector[19].empty())
-    {
-        if(pJson.isMember(pMasqueradingVector[19]))
-        {
-            if(!validJsonOfField(19, pMasqueradingVector[19], pJson[pMasqueradingVector[19]], err, true))
-                return false;
-        }
-        else
-        {
-            err="The " + pMasqueradingVector[19] + " column cannot be null";
-            return false;
-        }
-    }
-    if(!pMasqueradingVector[20].empty())
-    {
-        if(pJson.isMember(pMasqueradingVector[20]))
-        {
-            if(!validJsonOfField(20, pMasqueradingVector[20], pJson[pMasqueradingVector[20]], err, true))
-                return false;
-        }
-        else
-        {
-            err="The " + pMasqueradingVector[20] + " column cannot be null";
-            return false;
-        }
-    }
-    if(!pMasqueradingVector[21].empty())
-    {
-        if(pJson.isMember(pMasqueradingVector[21]))
-        {
-            if(!validJsonOfField(21, pMasqueradingVector[21], pJson[pMasqueradingVector[21]], err, true))
-                return false;
-        }
-        else
-        {
-            err="The " + pMasqueradingVector[21] + " column cannot be null";
-            return false;
-        }
-    }
-    if(!pMasqueradingVector[22].empty())
-    {
-        if(pJson.isMember(pMasqueradingVector[22]))
-        {
-            if(!validJsonOfField(22, pMasqueradingVector[22], pJson[pMasqueradingVector[22]], err, true))
-                return false;
-        }
-        else
-        {
-            err="The " + pMasqueradingVector[22] + " column cannot be null";
-            return false;
-        }
-    }
-    if(!pMasqueradingVector[23].empty())
-    {
-        if(pJson.isMember(pMasqueradingVector[23]))
-        {
-            if(!validJsonOfField(23, pMasqueradingVector[23], pJson[pMasqueradingVector[23]], err, true))
-                return false;
-        }
-        else
-        {
-            err="The " + pMasqueradingVector[23] + " column cannot be null";
-            return false;
-        }
-    }
-    if(!pMasqueradingVector[24].empty())
-    {
-        if(pJson.isMember(pMasqueradingVector[24]))
-        {
-            if(!validJsonOfField(24, pMasqueradingVector[24], pJson[pMasqueradingVector[24]], err, true))
-                return false;
-        }
-        else
-        {
-            err="The " + pMasqueradingVector[24] + " column cannot be null";
-            return false;
-        }
-    }
-    if(!pMasqueradingVector[25].empty())
-    {
-        if(pJson.isMember(pMasqueradingVector[25]))
-        {
-            if(!validJsonOfField(25, pMasqueradingVector[25], pJson[pMasqueradingVector[25]], err, true))
-                return false;
-        }
-        else
-        {
-            err="The " + pMasqueradingVector[25] + " column cannot be null";
-            return false;
-        }
-    }
     return true;
 }
 bool Menu::validateJsonForUpdate(const Json::Value &pJson, std::string &err)
@@ -3899,94 +2739,54 @@ bool Menu::validateJsonForUpdate(const Json::Value &pJson, std::string &err)
         if(!validJsonOfField(7, "first6", pJson["first6"], err, false))
             return false;
     }
-    if(pJson.isMember("first7"))
-    {
-        if(!validJsonOfField(8, "first7", pJson["first7"], err, false))
-            return false;
-    }
-    if(pJson.isMember("first8"))
-    {
-        if(!validJsonOfField(9, "first8", pJson["first8"], err, false))
-            return false;
-    }
-    if(pJson.isMember("first9"))
-    {
-        if(!validJsonOfField(10, "first9", pJson["first9"], err, false))
-            return false;
-    }
-    if(pJson.isMember("first10"))
-    {
-        if(!validJsonOfField(11, "first10", pJson["first10"], err, false))
-            return false;
-    }
     if(pJson.isMember("second1"))
     {
-        if(!validJsonOfField(12, "second1", pJson["second1"], err, false))
+        if(!validJsonOfField(8, "second1", pJson["second1"], err, false))
             return false;
     }
     if(pJson.isMember("second2"))
     {
-        if(!validJsonOfField(13, "second2", pJson["second2"], err, false))
+        if(!validJsonOfField(9, "second2", pJson["second2"], err, false))
             return false;
     }
     if(pJson.isMember("second3"))
     {
-        if(!validJsonOfField(14, "second3", pJson["second3"], err, false))
+        if(!validJsonOfField(10, "second3", pJson["second3"], err, false))
             return false;
     }
     if(pJson.isMember("second4"))
     {
-        if(!validJsonOfField(15, "second4", pJson["second4"], err, false))
+        if(!validJsonOfField(11, "second4", pJson["second4"], err, false))
             return false;
     }
     if(pJson.isMember("second5"))
     {
-        if(!validJsonOfField(16, "second5", pJson["second5"], err, false))
+        if(!validJsonOfField(12, "second5", pJson["second5"], err, false))
             return false;
     }
     if(pJson.isMember("second6"))
     {
-        if(!validJsonOfField(17, "second6", pJson["second6"], err, false))
-            return false;
-    }
-    if(pJson.isMember("second7"))
-    {
-        if(!validJsonOfField(18, "second7", pJson["second7"], err, false))
-            return false;
-    }
-    if(pJson.isMember("second8"))
-    {
-        if(!validJsonOfField(19, "second8", pJson["second8"], err, false))
-            return false;
-    }
-    if(pJson.isMember("second9"))
-    {
-        if(!validJsonOfField(20, "second9", pJson["second9"], err, false))
-            return false;
-    }
-    if(pJson.isMember("second10"))
-    {
-        if(!validJsonOfField(21, "second10", pJson["second10"], err, false))
+        if(!validJsonOfField(13, "second6", pJson["second6"], err, false))
             return false;
     }
     if(pJson.isMember("comment1"))
     {
-        if(!validJsonOfField(22, "comment1", pJson["comment1"], err, false))
+        if(!validJsonOfField(14, "comment1", pJson["comment1"], err, false))
             return false;
     }
     if(pJson.isMember("comment2"))
     {
-        if(!validJsonOfField(23, "comment2", pJson["comment2"], err, false))
+        if(!validJsonOfField(15, "comment2", pJson["comment2"], err, false))
             return false;
     }
     if(pJson.isMember("comment3"))
     {
-        if(!validJsonOfField(24, "comment3", pJson["comment3"], err, false))
+        if(!validJsonOfField(16, "comment3", pJson["comment3"], err, false))
             return false;
     }
     if(pJson.isMember("enabled"))
     {
-        if(!validJsonOfField(25, "enabled", pJson["enabled"], err, false))
+        if(!validJsonOfField(17, "enabled", pJson["enabled"], err, false))
             return false;
     }
     return true;
@@ -3995,7 +2795,7 @@ bool Menu::validateMasqueradedJsonForUpdate(const Json::Value &pJson,
                                             const std::vector<std::string> &pMasqueradingVector,
                                             std::string &err)
 {
-    if(pMasqueradingVector.size() != 26)
+    if(pMasqueradingVector.size() != 18)
     {
         err = "Bad masquerading vector";
         return false;
@@ -4093,46 +2893,6 @@ bool Menu::validateMasqueradedJsonForUpdate(const Json::Value &pJson,
     if(!pMasqueradingVector[17].empty() && pJson.isMember(pMasqueradingVector[17]))
     {
         if(!validJsonOfField(17, pMasqueradingVector[17], pJson[pMasqueradingVector[17]], err, false))
-            return false;
-    }
-    if(!pMasqueradingVector[18].empty() && pJson.isMember(pMasqueradingVector[18]))
-    {
-        if(!validJsonOfField(18, pMasqueradingVector[18], pJson[pMasqueradingVector[18]], err, false))
-            return false;
-    }
-    if(!pMasqueradingVector[19].empty() && pJson.isMember(pMasqueradingVector[19]))
-    {
-        if(!validJsonOfField(19, pMasqueradingVector[19], pJson[pMasqueradingVector[19]], err, false))
-            return false;
-    }
-    if(!pMasqueradingVector[20].empty() && pJson.isMember(pMasqueradingVector[20]))
-    {
-        if(!validJsonOfField(20, pMasqueradingVector[20], pJson[pMasqueradingVector[20]], err, false))
-            return false;
-    }
-    if(!pMasqueradingVector[21].empty() && pJson.isMember(pMasqueradingVector[21]))
-    {
-        if(!validJsonOfField(21, pMasqueradingVector[21], pJson[pMasqueradingVector[21]], err, false))
-            return false;
-    }
-    if(!pMasqueradingVector[22].empty() && pJson.isMember(pMasqueradingVector[22]))
-    {
-        if(!validJsonOfField(22, pMasqueradingVector[22], pJson[pMasqueradingVector[22]], err, false))
-            return false;
-    }
-    if(!pMasqueradingVector[23].empty() && pJson.isMember(pMasqueradingVector[23]))
-    {
-        if(!validJsonOfField(23, pMasqueradingVector[23], pJson[pMasqueradingVector[23]], err, false))
-            return false;
-    }
-    if(!pMasqueradingVector[24].empty() && pJson.isMember(pMasqueradingVector[24]))
-    {
-        if(!validJsonOfField(24, pMasqueradingVector[24], pJson[pMasqueradingVector[24]], err, false))
-            return false;
-    }
-    if(!pMasqueradingVector[25].empty() && pJson.isMember(pMasqueradingVector[25]))
-    {
-        if(!validJsonOfField(25, pMasqueradingVector[25], pJson[pMasqueradingVector[25]], err, false))
             return false;
     }
     return true;
@@ -4355,102 +3115,6 @@ bool Menu::validJsonOfField(size_t index,
             }
             break;
         case 17:
-            if(pJson.isNull())
-            {
-                err="The " + fieldName + " column cannot be null";
-                return false;
-            }
-            if(!pJson.isString())
-            {
-                err="Type error in the "+fieldName+" field";
-                return false;                
-            }
-            break;
-        case 18:
-            if(pJson.isNull())
-            {
-                err="The " + fieldName + " column cannot be null";
-                return false;
-            }
-            if(!pJson.isString())
-            {
-                err="Type error in the "+fieldName+" field";
-                return false;                
-            }
-            break;
-        case 19:
-            if(pJson.isNull())
-            {
-                err="The " + fieldName + " column cannot be null";
-                return false;
-            }
-            if(!pJson.isString())
-            {
-                err="Type error in the "+fieldName+" field";
-                return false;                
-            }
-            break;
-        case 20:
-            if(pJson.isNull())
-            {
-                err="The " + fieldName + " column cannot be null";
-                return false;
-            }
-            if(!pJson.isString())
-            {
-                err="Type error in the "+fieldName+" field";
-                return false;                
-            }
-            break;
-        case 21:
-            if(pJson.isNull())
-            {
-                err="The " + fieldName + " column cannot be null";
-                return false;
-            }
-            if(!pJson.isString())
-            {
-                err="Type error in the "+fieldName+" field";
-                return false;                
-            }
-            break;
-        case 22:
-            if(pJson.isNull())
-            {
-                err="The " + fieldName + " column cannot be null";
-                return false;
-            }
-            if(!pJson.isString())
-            {
-                err="Type error in the "+fieldName+" field";
-                return false;                
-            }
-            break;
-        case 23:
-            if(pJson.isNull())
-            {
-                err="The " + fieldName + " column cannot be null";
-                return false;
-            }
-            if(!pJson.isString())
-            {
-                err="Type error in the "+fieldName+" field";
-                return false;                
-            }
-            break;
-        case 24:
-            if(pJson.isNull())
-            {
-                err="The " + fieldName + " column cannot be null";
-                return false;
-            }
-            if(!pJson.isString())
-            {
-                err="Type error in the "+fieldName+" field";
-                return false;                
-            }
-            break;
-        case 25:
             if(pJson.isNull())
             {
                 err="The " + fieldName + " column cannot be null";
