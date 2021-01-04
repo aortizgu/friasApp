@@ -15,7 +15,7 @@ set(CMAKE_PLATFORM_INDEPENDENT_CODE ON)
 add_subdirectory(spdlog)
 
 set(INSTALL_BIN_DIR "/tmp/friasApp")
-option(BUILD_CTL "Build drogon_ctl" ON)
+option(BUILD_CTL "Build drogon_ctl" OFF)
 option(BUILD_EXAMPLES "Build examples" OFF)
 add_subdirectory(drogon)
 

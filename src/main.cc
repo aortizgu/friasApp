@@ -10,44 +10,43 @@ using namespace drogon;
 void init_log(const std::string &appname)
 {
     auto console_sink = std::make_shared<sinks::stdout_color_sink_mt>();
-    auto file_sink = std::make_shared<sinks::basic_file_sink_mt>("/tmp/friasApp.log", true);
+    auto file_sink = std::make_shared<sinks::basic_file_sink_mt>("/tmp/friasApp.log", false);
     auto l = std::make_shared<logger>(appname, sinks_init_list{console_sink, file_sink});
     set_default_logger(l);
+    spdlog::flush_every(std::chrono::seconds(3));
 }
 
 void print_handlers()
 {
-    std::cout << "|||||||||||||||||||||||||||HANDLERS||||||||||||||||||||||||||" << std::endl;
+    spdlog::info("|||||||||||||||||||||||||||HANDLERS||||||||||||||||||||||||||");
     auto handlerInfo = app().getHandlersInfo();
     for (auto &info : handlerInfo)
     {
-        std::cout << std::get<0>(info);
         switch (std::get<1>(info))
         {
         case Get:
-            std::cout << " (GET) ";
+            spdlog::info("{0} {1} {2}", std::get<0>(info), " (GET) ", std::get<2>(info));
             break;
         case Post:
-            std::cout << " (POST) ";
+            spdlog::info("{0} {1} {2}", std::get<0>(info), " (POST) ", std::get<2>(info));
             break;
         case Delete:
-            std::cout << " (DELETE) ";
+            spdlog::info("{0} {1} {2}", std::get<0>(info), " (DELETE) ", std::get<2>(info));
             break;
         case Put:
-            std::cout << " (PUT) ";
+            spdlog::info("{0} {1} {2}", std::get<0>(info), " (PUT) ", std::get<2>(info));
             break;
         case Options:
-            std::cout << " (OPTIONS) ";
+            spdlog::info("{0} {1} {2}", std::get<0>(info), " (OPTIONS) ", std::get<2>(info));
             break;
         case Head:
-            std::cout << " (Head) ";
+            spdlog::info("{0} {1} {2}", std::get<0>(info), " (Head) ", std::get<2>(info));
             break;
         default:
             break;
         }
-        std::cout << std::get<2>(info) << std::endl;
     }
-    std::cout << "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||" << std::endl;
+    spdlog::info("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
 }
 
 int main(int argc, char *argv[])
@@ -133,10 +132,7 @@ int main(int argc, char *argv[])
 //    });
 
     print_handlers();
-
-    std::cout << "Date: "
-              << std::string{drogon::utils::getHttpFullDate(
-                     trantor::Date::now())}
-              << std::endl;
+    spdlog::info("Date: {0}", std::string{drogon::utils::getHttpFullDate(
+            trantor::Date::now())});
     app().run();
 }

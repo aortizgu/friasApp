@@ -62,7 +62,7 @@
   <br>
 
   <footer class="bg-dark footer">
-    <p class="text-center footer-text">Calle Ciudad de Frías, 2B, 28021 Madrid - 91 798 83 22</p>    
+    <p class="text-center footer-text">Calle Ciudad de Frías, 2B, 28021 Madrid - 91 798 83 22 v[[version]]</p>    
   </footer>
 
   <script src="vendor/jquery/jquery.min.js"></script>
