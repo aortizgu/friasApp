@@ -1,6 +1,7 @@
 #include "Controller.h"
 
 #include "models/Menu.h"
+#include "version.h"
 
 using namespace drogon_model::sqlite3;
 
@@ -60,7 +61,7 @@ void Controller::admin(const HttpRequestPtr &req,
         Mapper<Menu> mpMenu(app().getDbClient());
         auto menus = mpMenu.findAll();
         data.insert("menus", menus);
-
+        data.insert("version", FRIASAPP_VERSION);
         resp = HttpResponse::newHttpViewResponse("AdminView.csp", data);
     } catch (const DrogonDbException &e) {
         resp->setStatusCode(HttpStatusCode::k500InternalServerError);
