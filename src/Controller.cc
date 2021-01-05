@@ -50,6 +50,12 @@ void Controller::list(const HttpRequestPtr &req,
     callback(resp);
 }
 
+void Controller::listOld(const HttpRequestPtr &req,
+        std::function<void(const HttpResponsePtr&)> &&callback) const {
+    auto resp = HttpResponse::newRedirectionResponse("/");
+    callback(resp);
+}
+
 void Controller::admin(const HttpRequestPtr &req,
         std::function<void(const HttpResponsePtr&)> &&callback) const {
     auto resp = HttpResponse::newHttpResponse();
